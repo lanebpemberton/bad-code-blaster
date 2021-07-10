@@ -1,7 +1,5 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
-import Card from './components/Card';
+import GameCanvas from './components/GameCanvas';
 import './styles/Global.css';
 
 const styles = {
@@ -15,11 +13,7 @@ const styles = {
 function App() {
   return (
     <div style={styles.body}>
-      <Header />
-      <Navbar />
-      <Card />
-      <Card />
-      <Card />
+      <GameCanvas />
     </div>
   );
 }
