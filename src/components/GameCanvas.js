@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import Graphics from '../engine/Graphics';
+import GameEngine from '../game/GameEngine';
 
 // Here we are importing a CSS file as a dependency
 import '../styles/GameCanvas.css';
@@ -9,11 +9,11 @@ class GameCanvas extends Component
     componentDidMount()
     {
         //initialize graphics of game area
-        let graphics = new Graphics();
+        let gameEngine = new GameEngine();
         //set scaling to device resolution
-        graphics.initialize();
+        gameEngine.initialize();
         //draw initial graphics
-        graphics.drawRedBox();
+        gameEngine.drawPlayerOne();
     }
     render()
     {

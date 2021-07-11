@@ -1,4 +1,6 @@
-class Graphics {
+import Scale from "./Scale";
+
+class GameEngine {
     constructor()
     {
         this.canvas = document.getElementById("gameCanvas");
@@ -7,16 +9,14 @@ class Graphics {
 
     initialize()
     {
-        let heightRatio = .4;
-        this.canvas.height = this.canvas.width * heightRatio;
+      //set correct scale of game canvas
+      Scale(this.canvas,this.ctx);
     }
 
-    
-
-    drawRedBox()
+    drawPlayerOne()
     {
         this.ctx.beginPath();
-        this.ctx.rect(20, 40, 50, 50);
+        this.ctx.arc(20, 40, 10, 0, Math.PI*2, false);
         this.ctx.fillStyle = "#FF0000";
         this.ctx.fill();
         this.ctx.closePath();
@@ -26,4 +26,4 @@ class Graphics {
 
 
 
-export default Graphics;
+export default GameEngine;
