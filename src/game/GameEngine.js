@@ -16,7 +16,9 @@ class GameEngine {
       //set correct scale of game canvas
       Scale(this.canvas,this.ctx);
       //setup event handlers for keyboard input
-      assignPlayerControls();
+      this.assignPlayerControls();
+      //start game engine running every 10 milliseconds
+      this.startEngine();
     }
 
     assignPlayerControls()
@@ -47,16 +49,38 @@ class GameEngine {
 
     drawPlayerOne()
     {
-        this.ctx.beginPath();
-        this.ctx.arc(this.playerX, this.canvas.height-this.playerRadius, this.playerRadius, 0, Math.PI*2, false);
-        this.ctx.fillStyle = "#FF0000";
-        this.ctx.fill();
-        this.ctx.closePath();
+      this.ctx.beginPath();
+      this.ctx.arc(this.playerX, this.canvas.height-this.playerRadius, this.playerRadius, 0, Math.PI*2, false);
+      this.ctx.fillStyle = "#FF0000";
+      this.ctx.fill();
+      this.ctx.closePath();
+    }
+
+    startEngine()
+    {
+      setInterval(this.runEngine, 10);
     }
 
     runEngine()
     {
+      //reset view before redraw
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      if(this.rightPressed) 
+      {
+        this.playerX += 7;
+        if (this.playerX + this.playerRadius > this.canvas.width)
+        {
+          this.playerX = this.canvas.width - this.playerRadius;
+        }
+      }
+      else if(this.leftPressed)
+      {
+        this.playerX -= 7;
+          if (this.playerX < 0)
+          {
+            this.playerX = 0;
+          }
+      }
     }
 
 }
