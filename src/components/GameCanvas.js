@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import Backgrounds from '../engine/Backgrounds';
+import Graphics from '../engine/Graphics';
 
 // Here we are importing a CSS file as a dependency
 import '../styles/GameCanvas.css';
@@ -8,10 +8,12 @@ class GameCanvas extends Component
 {
     componentDidMount()
     {
-        //initialize background of game area
-        let background = new Backgrounds();
-        //draw initial artwork
-        background.drawRedBox();
+        //initialize graphics of game area
+        let graphics = new Graphics();
+        //set scaling to device resolution
+        graphics.initialize();
+        //draw initial graphics
+        graphics.drawRedBox();
     }
     render()
     {
