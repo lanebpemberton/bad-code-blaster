@@ -1,3 +1,4 @@
+//used from: https://medium.com/@doomgoober/understanding-html-canvas-scaling-and-sizing-c04925d9a830
 function Scale(canvas,ctx)
 {
     let heightRatio = .4;
