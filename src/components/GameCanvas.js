@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Here we are importing a CSS file as a dependency
-//import '../styles/Header.css';
+import '../styles/GameCanvas.css';
 
 //here we setup inline styles as a js object
 // const styles = {
@@ -10,10 +10,12 @@ import React from 'react';
 //     }
 // }
 
+
+
 function GameCanvas()
 {
     return (
-        <canvas>
+        <canvas id="gameCanvas" className="gameCanvas">
             </canvas>
     );
 }
