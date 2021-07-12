@@ -23,8 +23,8 @@ class GameEngine {
 
     assignPlayerControls()
     {
-      document.addEventListener("keydown", this.controllerKeyDown, false);
-      document.addEventListener("keyup", this.controllerKeyUp, false);
+      document.addEventListener("keydown", this.controllerKeyDown.bind(this), false);
+      document.addEventListener("keyup", this.controllerKeyUp.bind(this), false);
     }
 
     controllerKeyDown(e)
@@ -50,23 +50,31 @@ class GameEngine {
     drawPlayerOne()
     {
       this.ctx.beginPath();
-      this.ctx.arc(this.playerX, this.canvas.height-this.playerRadius, this.playerRadius, 0, Math.PI*2, false);
+      this.ctx.arc(this.playerX, 20-this.playerRadius, this.playerRadius, 0, Math.PI*2, false);
       this.ctx.fillStyle = "#FF0000";
       this.ctx.fill();
       this.ctx.closePath();
     }
 
+    drawGun()
+    {
+      this.ctx.beginPath();
+      
+    }
+
     startEngine()
     {
-      setInterval(this.runEngine, 10);
+      setInterval(this.runEngine.bind(this),10);
     }
 
     runEngine()
     {
       //reset view before redraw
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.drawPlayerOne();
       if(this.rightPressed) 
       {
+        console.log("right pressed");
         this.playerX += 7;
         if (this.playerX + this.playerRadius > this.canvas.width)
         {
@@ -84,7 +92,5 @@ class GameEngine {
     }
 
 }
-
-
 
 export default GameEngine;

@@ -12,8 +12,6 @@ class GameCanvas extends Component
         let gameEngine = new GameEngine();
         //set scaling to device resolution
         gameEngine.initialize();
-        //draw initial graphics
-        gameEngine.drawPlayerOne();
     }
     render()
     {
