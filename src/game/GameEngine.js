@@ -1,14 +1,14 @@
 import Scale from "./Scale";
+import Player from "./Player";
 
 class GameEngine {
     constructor()
     {
       this.canvas = document.getElementById("gameCanvas");
       this.ctx = this.canvas.getContext("2d");
-      this.playerRadius = 9;
-      this.playerX = (this.canvas.width-this.playerRadius)/2;
-      this.rightPressed = false;
-      this.leftPressed = false;
+      this.player = null;
+      this.upPressed = false;
+      this.downPressed = false;
     }
 
     initialize()
@@ -17,6 +17,9 @@ class GameEngine {
       Scale(this.canvas,this.ctx);
       //setup event handlers for keyboard input
       this.assignPlayerControls();
+      //initialize player
+      this.player = new Player(this.canvas, this.ctx);
+      this.player.draw();
       //start game engine running every 10 milliseconds
       this.startEngine();
     }
@@ -30,36 +33,30 @@ class GameEngine {
     controllerKeyDown(e)
     {
       if(e.key == "Right" || e.key == "ArrowRight") {
-        this.rightPressed = true;
+        this.upPressed = true;
       }
       else if(e.key == "Left" || e.key == "ArrowLeft") {
-        this.leftPressed = true;
+        this.downPressed = true;
       }
     }
 
     controllerKeyUp(e)
     {
       if(e.key == "Right" || e.key == "ArrowRight") {
-        this.rightPressed = false;
+        this.upPressed = false;
     }
       else if(e.key == "Left" || e.key == "ArrowLeft") {
-        this.leftPressed = false;
+        this.downPressed = false;
       }
     }
-
+    
     drawPlayerOne()
     {
       this.ctx.beginPath();
-      this.ctx.arc(this.playerX, 20-this.playerRadius, this.playerRadius, 0, Math.PI*2, false);
+      this.ctx.arc(15,this.player.y, this.player.radius, 0, Math.PI*2, false);
       this.ctx.fillStyle = "#FF0000";
       this.ctx.fill();
       this.ctx.closePath();
-    }
-
-    drawGun()
-    {
-      this.ctx.beginPath();
-      
     }
 
     startEngine()
@@ -71,22 +68,21 @@ class GameEngine {
     {
       //reset view before redraw
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.drawPlayerOne();
-      if(this.rightPressed) 
+      this.player.draw();
+      if(this.upPressed) 
       {
-        console.log("right pressed");
-        this.playerX += 7;
-        if (this.playerX + this.playerRadius > this.canvas.width)
+        this.player.y += 3;
+        if (this.player.y + this.player.radius > this.canvas.width)
         {
-          this.playerX = this.canvas.width - this.playerRadius;
+          this.player.y = this.canvas.height - this.player.radius;
         }
       }
-      else if(this.leftPressed)
+      else if(this.downPressed)
       {
-        this.playerX -= 7;
-          if (this.playerX < 0)
+        this.player.y -= 3;
+          if (this.player.y < 0)
           {
-            this.playerX = 0;
+            this.player.y = 0;
           }
       }
     }
