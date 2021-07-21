@@ -6,15 +6,16 @@ const routes = require('./routes');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+
 const server = new ApolloServer({
   typeDefs,
   resolvers
 });
 
+const app = express();
 server.applyMiddleware({ app });
 
+const PORT = process.env.PORT || 3001; 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
