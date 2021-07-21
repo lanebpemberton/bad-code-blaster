@@ -7,8 +7,8 @@ class GameEngine {
       this.canvas = document.getElementById("gameCanvas");
       this.ctx = this.canvas.getContext("2d");
       this.player = null;
-      this.upPressed = false;
-      this.downPressed = false;
+      this.leftPressed = false;
+      this.rightPressed = false;
       this.initialize();
     }
 
@@ -34,20 +34,20 @@ class GameEngine {
     controllerKeyDown(e)
     {
       if(e.key == "Right" || e.key == "ArrowRight") {
-        this.upPressed = true;
+        this.leftPressed = true;
       }
       else if(e.key == "Left" || e.key == "ArrowLeft") {
-        this.downPressed = true;
+        this.rightPressed = true;
       }
     }
 
     controllerKeyUp(e)
     {
       if(e.key == "Right" || e.key == "ArrowRight") {
-        this.upPressed = false;
-    }
+        this.leftPressed = false;
+      }
       else if(e.key == "Left" || e.key == "ArrowLeft") {
-        this.downPressed = false;
+        this.rightPressed = false;
       }
     }
     
@@ -70,7 +70,7 @@ class GameEngine {
       //reset view before redraw
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.player.draw();
-      if(this.upPressed) 
+      if(this.leftPressed) 
       {
         this.player.y += 3;
         if (this.player.y + this.player.radius > this.canvas.width)
@@ -78,7 +78,7 @@ class GameEngine {
           this.player.y = this.canvas.height - this.player.radius;
         }
       }
-      else if(this.downPressed)
+      else if(this.rightPressed)
       {
         this.player.y -= 3;
           if (this.player.y < 0)
