@@ -9,6 +9,7 @@ class GameEngine {
       this.player = null;
       this.upPressed = false;
       this.downPressed = false;
+      this.initialize();
     }
 
     initialize()

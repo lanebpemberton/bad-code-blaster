@@ -13,9 +13,10 @@
 } 
 
 .gameCanvas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  object-fit: contain;
+  display: block;
+  max-height:100%;
   background: #ccc;
+  position: relative;
+  justify-self: center;
+  /* border: 3px solid red; */
 }

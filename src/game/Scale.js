@@ -1,8 +1,9 @@
 //used from: https://medium.com/@doomgoober/understanding-html-canvas-scaling-and-sizing-c04925d9a830
 function Scale(canvas,ctx)
 {
-    let heightRatio = .4;
-    canvas.height = canvas.width * heightRatio;
+    let heightRatio = .6;
+    canvas.height = window.innerHeight;
+    canvas.width = canvas.height * heightRatio;
 
     const originalWidth = canvas.width;
     const originalHeight = canvas.height;
@@ -13,17 +14,17 @@ function Scale(canvas,ctx)
         canvas.clientHeight,
         canvas.width,
         canvas.height
-      );
+    );
 
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = dimensions.width * dpr;
-    canvas.height = dimensions.height * dpr;
+    //canvas.width = dimensions.width * dpr;
+    //canvas.height = dimensions.height * dpr;
 
     let ratio = Math.min(
         canvas.clientWidth / originalWidth,
         canvas.clientHeight / originalHeight
     );
-    ctx.scale(ratio * dpr, ratio * dpr); 
+    ctx.scale(ratio * dpr, ratio * dpr);
 }
 
 // adapted from: https://www.npmjs.com/package/intrinsic-scale

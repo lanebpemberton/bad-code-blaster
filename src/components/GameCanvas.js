@@ -8,10 +8,8 @@ class GameCanvas extends Component
 {
     componentDidMount()
     {
-        //initialize graphics of game area
+        //initialize game engine
         let gameEngine = new GameEngine();
-        //set scaling to device resolution
-        gameEngine.initialize();
     }
     render()
     {

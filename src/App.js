@@ -5,7 +5,9 @@ import './styles/Global.css';
 const styles = {
   body:{
     padding:0,
-    margin:0
+    margin:0,
+    justifyContent:'center',
+    display:'flex'
   }
 }
 
