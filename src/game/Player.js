@@ -10,10 +10,8 @@ class Player {
         this.sprite.src = logo;
         this.width = 45;
         this.height = 31;
-        // this.x = (this.canvas.width-this.width)/2;
-        this.x = 20;
-        console.log(this.canvas.height);
-        this.y = 15;
+        this.x = (this.canvas.width-this.width)/2;
+        this.y = .9 * this.canvas.height;
         // this.y = 60;
     }
 

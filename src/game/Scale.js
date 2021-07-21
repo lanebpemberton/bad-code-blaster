@@ -25,7 +25,8 @@ function Scale(canvas,ctx)
         canvas.clientWidth / originalWidth,
         canvas.clientHeight / originalHeight
     );
-    ctx.scale(ratio * dpr, ratio * dpr);
+    ctx.scale(ratio, ratio);
+    //ctx.scale(ratio * dpr, ratio * dpr);
 }
 
 // adapted from: https://www.npmjs.com/package/intrinsic-scale

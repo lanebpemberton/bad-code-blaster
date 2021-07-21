@@ -22,7 +22,7 @@ class GameEngine {
       this.player = new Player(this.canvas, this.ctx);
       this.player.draw();
       //start game engine running every 10 milliseconds
-      //this.startEngine();
+      this.startEngine();
     }
 
     assignPlayerControls()
