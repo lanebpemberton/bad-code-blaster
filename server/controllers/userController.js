@@ -1,20 +1,44 @@
-const router = require('express').Router();
-const {
-  createUser,
-  getSingleUser,
-  login,
-} = require('../../controllers/user-controller');
+const { User } = require('../models');
+// import sign token function from auth
+// const { signToken } = require('../utils/auth');
 
-// import middleware
-const { authMiddleware } = require('../../utils/auth');
+module.exports = {
+  // get a single user by either their id or their username
+  async getUserById({ user = null, params }, res) {
+    const foundUser = await User.findOne({
+      $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
+    });
 
-// put authMiddleware anywhere we need to send a token for verification of user
-router.route('/').post(createUser).put(authMiddleware);
+    if (!foundUser) {
+      return res.status(400).json({ message: 'Cannot find a user with this id!' });
+    }
 
-router.route('/login').post(login);
+    res.json(foundUser);
+  },
+  // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
+  async createUser({ body }, res) {
+    const user = await User.create(body);
 
-router.route('/me').get(authMiddleware, getSingleUser);
+    if (!user) {
+      return res.status(400).json({ message: 'User creation failed.' });
+    }
+    // const token = signToken(user); send token in res.json() as well
+    res.json(user);
+  },
+  // login a user, sign a token, and send it back (to client/src/components/LoginForm.js)
+  // {body} is destructured req.body
+  async login({ body }, res) {
+    const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
+    if (!user) {
+      return res.status(400).json({ message: "Can't find this user" });
+    }
 
+    const correctPw = await user.isCorrectPassword(body.password);
 
-
-module.exports = router;
+    if (!correctPw) {
+      return res.status(400).json({ message: 'Wrong password!' });
+    }
+    // const token = signToken(user); send token in res.json() as well
+    res.json(user);
+  },
+};
