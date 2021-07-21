@@ -14,9 +14,10 @@
 
 .gameCanvas {
   display: block;
-  max-height:100%;
+  object-fit:contain;
+  /* max-height:100%; */
   background: #ccc;
-  position: relative;
-  justify-self: center;
+  /* position: relative; */
+  /* justify-self: center; */
   /* border: 3px solid red; */
 }

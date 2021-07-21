@@ -22,7 +22,7 @@ class GameEngine {
       this.player = new Player(this.canvas, this.ctx);
       this.player.draw();
       //start game engine running every 10 milliseconds
-      this.startEngine();
+      //this.startEngine();
     }
 
     assignPlayerControls()
@@ -50,15 +50,6 @@ class GameEngine {
         this.rightPressed = false;
       }
     }
-    
-    drawPlayerOne()
-    {
-      this.ctx.beginPath();
-      this.ctx.arc(15,this.player.y, this.player.radius, 0, Math.PI*2, false);
-      this.ctx.fillStyle = "#FF0000";
-      this.ctx.fill();
-      this.ctx.closePath();
-    }
 
     startEngine()
     {
@@ -70,21 +61,24 @@ class GameEngine {
       //reset view before redraw
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.player.draw();
+
       if(this.leftPressed) 
       {
-        this.player.y += 3;
-        if (this.player.y + this.player.radius > this.canvas.width)
+        this.player.x += 3;
+        console.log("x coord: " + (this.player.x + this.player.width));
+        console.log("canvas width: " + (this.canvas.width));
+        if (this.player.x + this.player.width > this.canvas.width)
         {
-          this.player.y = this.canvas.height - this.player.radius;
+          this.player.x = this.canvas.width - this.player.width;
         }
       }
       else if(this.rightPressed)
       {
-        this.player.y -= 3;
-          if (this.player.y < 0)
-          {
-            this.player.y = 0;
-          }
+        this.player.x -= 3;
+        if (this.player.x < 0)
+        {
+          this.player.x = 0;
+        }
       }
     }
 

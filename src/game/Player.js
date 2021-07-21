@@ -5,19 +5,21 @@ class Player {
     {
         this.canvas = canvas;
         this.ctx = ctx;
-        this.radius = 9;
         this.sprite = new Image();
         this.canDraw = false;
         this.sprite.src = logo;
-        this.width = 10;
-        this.height = 14;
-        // this.y = (this.canvas.height-this.radius)/2;
-        this.y = 60;
+        this.width = 45;
+        this.height = 31;
+        // this.x = (this.canvas.width-this.width)/2;
+        this.x = 20;
+        console.log(this.canvas.height);
+        this.y = 15;
+        // this.y = 60;
     }
 
     draw()
     {
-        this.ctx.drawImage(this.sprite,15,this.y,this.width,this.height);
+        this.ctx.drawImage(this.sprite,this.x,this.y,this.width,this.height);
     }
 }
 
