@@ -7,6 +7,7 @@ const styles = {
     padding:0,
     margin:0,
     justifyContent:'center',
+    alignContent:'center',
     display:'flex'
   }
 }
