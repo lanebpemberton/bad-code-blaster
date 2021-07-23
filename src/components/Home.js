@@ -1,14 +1,14 @@
-import React from 'react';
+// import React from 'react';
 
-import '../styles/GameCanvas.css';
+// import '../styles/GameCanvas.css';
 
-function homeScreen (){
-return (
+// function homeScreen (){
+// return (
 
-sd
+// sd
 
 
-    );
-}
+//     );
+// }
 
-export default Homepage;
+// export default Homepage;
