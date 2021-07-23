@@ -1,5 +1,7 @@
 import Scale from "./Scale";
 import Player from "./Player";
+import {isMobile} from 'react-device-detect';
+import JoyStick from "./Joystick";
 
 class GameEngine {
     constructor()
@@ -9,7 +11,10 @@ class GameEngine {
       this.player = null;
       this.leftPressed = false;
       this.rightPressed = false;
+      this.joystick = null;
       this.initialize();
+      //request fullscreen
+      this.canvas.addEventListener("click",this.requestFullScreen.bind(this))
     }
 
     initialize()
@@ -25,10 +30,30 @@ class GameEngine {
       this.startEngine();
     }
 
+    requestFullScreen()
+    {
+      if(this.canvas.webkitRequestFullScreen)
+      {
+        this.canvas.webkitRequestFullScreen();
+      }
+      else if(this.canvas.mozRequestFullScreen)
+      {
+        this.canvas.mozRequestFullScreen();
+      }  
+    }
+
     assignPlayerControls()
     {
-      document.addEventListener("keydown", this.controllerKeyDown.bind(this), false);
-      document.addEventListener("keyup", this.controllerKeyUp.bind(this), false);
+      //setup controls based on device
+      if(isMobile)
+      {
+        console.log("make new joy");
+        this.joystick = new JoyStick(this.canvas, this.ctx);
+      }else
+      {
+        document.addEventListener("keydown", this.controllerKeyDown.bind(this), false);
+        document.addEventListener("keyup", this.controllerKeyUp.bind(this), false);
+      }
     }
 
     controllerKeyDown(e)
@@ -61,12 +86,21 @@ class GameEngine {
       //reset view before redraw
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.player.draw();
+      if(isMobile)
+      {
+        this.joystick.draw();
+        if(this.joystick.x>this.joystick.originalX)
+        {
+          this.leftPressed = true;
+        }else if(this.joystick.x<this.joystick.originalX)
+        {
+          this.rightPressed = true;
+        }
+      }
 
       if(this.leftPressed) 
       {
         this.player.x += 3;
-        console.log("x coord: " + (this.player.x + this.player.width));
-        console.log("canvas width: " + (this.canvas.width));
         if (this.player.x + this.player.width > this.canvas.width)
         {
           this.player.x = this.canvas.width - this.player.width;
@@ -79,6 +113,12 @@ class GameEngine {
         {
           this.player.x = 0;
         }
+      }
+      
+      if(isMobile)
+      {
+        this.rightPressed = false;
+        this.leftPressed = false;
       }
     }
 

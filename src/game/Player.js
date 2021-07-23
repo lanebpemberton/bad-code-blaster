@@ -6,7 +6,6 @@ class Player {
         this.canvas = canvas;
         this.ctx = ctx;
         this.sprite = new Image();
-        this.canDraw = false;
         this.sprite.src = logo;
         this.width = 45;
         this.height = 31;
