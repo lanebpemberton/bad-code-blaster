@@ -1,4 +1,4 @@
-const { User} = require('../models');
+const { User, Highscore } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 // const { signToken } = require('../utils/auth');
 
@@ -11,6 +11,13 @@ const resolvers = {
                 return userData;
             }
             throw new AuthenticationError('Not logged in');
+        },
+        getUserHighScore: async (parent, args, context) => {
+            if (args.user_id) {
+                const userData = await User.findById(args.user_id).select('highscores');
+                return userData;
+            }
+            throw new AuthenticationError('Not logged in, or no user_id passed.');
         }
     },
     Mutation: {
