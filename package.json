@@ -1,0 +1,19 @@
+{
+  "name": "bad-code-blaster",
+  "version": "1.0.0",
+  "description": "Client and server packages for bad-code-blaster.",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lanebpemberton/bad-code-blaster.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lanebpemberton/bad-code-blaster/issues"
+  },
+  "homepage": "https://github.com/lanebpemberton/bad-code-blaster#readme"
+}
