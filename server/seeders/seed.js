@@ -1,3 +1,4 @@
+const { ProvidedRequiredArgumentsOnDirectivesRule } = require('graphql/validation/rules/ProvidedRequiredArgumentsRule');
 const mongoose = require('mongoose');
 const db = require('../models');
 
@@ -33,3 +34,18 @@ db.Highscore.deleteMany({}).then((db.User.deleteMany({}))).then((db.Ship.deleteM
         console.error(err);
         process.exit(1);
     });
+
+// var shipping = Shipss.shipList
+// var done = 0
+
+// for (var i= 0; i < shipping.length; i++) {
+//     shipping[i].save(function(err, result) {
+//         done++;
+//         if (done === shipping.length) {
+//             exit();
+//         }
+//     });
+// }
+// function exit() {
+// mongoose.disconnect();
+// }
