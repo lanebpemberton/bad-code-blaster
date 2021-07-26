@@ -13,11 +13,8 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
         getUserHighScore: async (parent, args, context) => {
-            if (args.user_id) {
-                const userData = await User.findById(args.user_id).select('highscores');
-                return userData;
-            }
-            throw new AuthenticationError('Not logged in, or no user_id passed.');
+            const userData = await User.findById(args.user_id).select('highscores');
+            return userData;
         }
     },
     Mutation: {
