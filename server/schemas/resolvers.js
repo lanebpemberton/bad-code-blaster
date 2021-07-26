@@ -38,6 +38,17 @@ const resolvers = {
             }
             // const token = signToken(user);
             return user;
+        }, 
+        changeShip: async (parent, args, context) => {
+            const userData = await User.findByIdAndUpdate(args.user_id, 
+                {
+                    $set: {
+                        current_ship: args.ship_id
+                    }
+                }
+            );
+
+            return userData;            
         }
     }
 };
