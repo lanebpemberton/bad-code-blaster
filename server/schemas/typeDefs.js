@@ -6,7 +6,9 @@ const typeDefs = gql`
     type User {
         _id: ID
         username: String
-        email: String    
+        email: String
+        current_ship: Ship
+        highscores: [Highscore]    
     }
 
     type Ship {
