@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const database = process.env.MONGODB_URI || 'mongodb+srv://root:forum007bcb2021@cluster0.c44k2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const database = process.env.MONGODB_URI || 'MONGODB_URI=mongodb+srv://root:forum007bcb2021@cluster0.c44k2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+// mongodb://localhost/bcbdb
 
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks',
 mongoose.connect(database, {
