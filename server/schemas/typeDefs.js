@@ -45,6 +45,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): User
         addUser(username: String!, email: String!, password: String!, current_ship: ID): User
         changeShip(user_id: ID, ship_id: ID): User
+        addHighscore(user_id: ID, ship_id: ID, score: Int, time_alive: Int, enemies_killed: Int, bad_code_blasted: Int, timestamp: String): User
     }
 `;
 
