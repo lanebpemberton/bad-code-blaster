@@ -46,6 +46,26 @@ const resolvers = {
             );
 
             return userData;            
+        },
+        addHighscore: async (parent, args, context) => {
+            const newHighscore = {
+                user_id: args.user_id,
+                ship_id: args.ship_id,
+                score: args.score,
+                time_alive: args.time_alive,
+                enemies_killed: args.enemies_killed,
+                bad_code_blasted: args.bad_code_blasted,
+                timestamp: args.timestamp
+            }
+            const userData = await User.findByIdAndUpdate(args.user_id, 
+                {
+                    $push: {
+                        highscores: newHighscore
+                    }
+                }
+            )
+
+            return userData;
         }
     }
 };
