@@ -1,5 +1,6 @@
 const { User, Highscore } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
+const mongoose = require('mongoose');
 // const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -48,6 +49,8 @@ const resolvers = {
             return userData;            
         },
         addHighscore: async (parent, args, context) => {
+            const dateAdded = new Date();
+
             const newHighscore = {
                 user_id: args.user_id,
                 ship_id: args.ship_id,
@@ -55,17 +58,22 @@ const resolvers = {
                 time_alive: args.time_alive,
                 enemies_killed: args.enemies_killed,
                 bad_code_blasted: args.bad_code_blasted,
-                timestamp: args.timestamp
+                timestamp: dateAdded,
             }
+
+            const createdScore = await Highscore.create(newHighscore);
             const userData = await User.findByIdAndUpdate(args.user_id, 
                 {
                     $push: {
-                        highscores: newHighscore
+                        highscores: createdScore._id
                     }
+                },
+                {
+                    new: true,
+                    runValidators: true,
                 }
             )
-
-            return userData;
+            return createdScore;
         }
     }
 };
