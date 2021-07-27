@@ -1,7 +1,7 @@
 import React from 'react';
-import GameCanvas from './components/GameCanvas';
+// import GameCanvas from './components/GameCanvas';
 import './styles/Global.css';
-
+import LoginUser from './components/LoginUser';
 const styles = {
   body:{
     padding:0,
@@ -16,7 +16,8 @@ const styles = {
 function App() {
   return (
     <div style={styles.body}>
-      <GameCanvas />
+      <LoginUser/>
+      {/* <GameCanvas /> */}
     </div>
   );
 }
