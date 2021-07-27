@@ -1,7 +1,8 @@
 import Scale from "./Scale";
 import Player from "./Player";
 import {isMobile} from 'react-device-detect';
-import JoyStick from "./Joystick";
+import MobileController from "./MobileController";
+import Background from "./Background";
 
 class GameEngine {
     constructor()
@@ -11,10 +12,13 @@ class GameEngine {
       this.player = null;
       this.leftPressed = false;
       this.rightPressed = false;
-      this.joystick = null;
+      this.firePressed = false;
+      this.mobileController = null;
       this.initialize();
+      //get instance of background after canvas is scaled!
+      this.background = new Background(this.canvas, this.ctx);
       //request fullscreen
-      this.canvas.addEventListener("click",this.requestFullScreen.bind(this))
+      //this.canvas.addEventListener("click",this.requestFullScreen.bind(this))
     }
 
     initialize()
@@ -47,8 +51,7 @@ class GameEngine {
       //setup controls based on device
       if(isMobile)
       {
-        console.log("make new joy");
-        this.joystick = new JoyStick(this.canvas, this.ctx);
+        this.mobileController = new MobileController(this.canvas, this.ctx);
       }else
       {
         document.addEventListener("keydown", this.controllerKeyDown.bind(this), false);
@@ -63,6 +66,9 @@ class GameEngine {
       }
       else if(e.key == "Left" || e.key == "ArrowLeft") {
         this.rightPressed = true;
+      }else if(e.code === 'Space')
+      {
+        this.firePressed = true;
       }
     }
 
@@ -73,6 +79,9 @@ class GameEngine {
       }
       else if(e.key == "Left" || e.key == "ArrowLeft") {
         this.rightPressed = false;
+      }else if(e.code === 'Space')
+      {
+        this.firePressed = false;
       }
     }
 
@@ -85,19 +94,25 @@ class GameEngine {
     {
       //reset view before redraw
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.background.draw();
       this.player.draw();
       if(isMobile)
       {
-        this.joystick.draw();
-        if(this.joystick.x>this.joystick.originalX)
+        this.mobileController.draw();
+        if(this.mobileController.joystick.x>this.mobileController.joystick.originalX)
         {
           this.leftPressed = true;
-        }else if(this.joystick.x<this.joystick.originalX)
+        }else if(this.mobileController.joystick.x<this.mobileController.joystick.originalX)
         {
           this.rightPressed = true;
         }
+        if(this.mobileController.fireButton.pressed)
+        {
+          this.firePressed = true;
+        }
       }
 
+      //Player movement
       if(this.leftPressed) 
       {
         this.player.x += 3;
@@ -114,12 +129,36 @@ class GameEngine {
           this.player.x = 0;
         }
       }
-      
+
+      //Bullet handling
+      if(this.player.bulletsFired.length>0)
+      {
+        //update bullets
+        for(let a = 0;a<this.player.bulletsFired.length;a++)
+        {
+          //update individual bullet position
+          let bulletUpdate = this.player.bulletsFired[a].update();
+          //check result of update
+          if(!bulletUpdate)
+          {
+            //destroy bullet
+            this.player.destroyBullet(a);
+          }
+        } 
+      }
+      if(this.firePressed)
+      {
+        this.player.fire();
+      }
+
+
       if(isMobile)
       {
         this.rightPressed = false;
         this.leftPressed = false;
+        this.mobileController.fireButton.pressed = false;
       }
+      this.firePressed = false;
     }
 
 }

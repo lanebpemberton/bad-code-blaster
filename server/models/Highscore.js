@@ -1,14 +1,14 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 
 
 const highscoreSchema = new Schema(
     {
         user_id: {
-            type: Schema.Types.ObjectId,
+            type: Types.ObjectId,
             ref: 'User'
         }, 
          ship_id: {
-             type: Schema.Types.ObjectId,
+             type: Types.ObjectId,
              ref: 'Ship'
          },
          score: {

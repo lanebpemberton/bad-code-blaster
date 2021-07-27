@@ -18,10 +18,14 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        current_ship: {
+            type: Schema.Types.ObjectId,
+            ref: 'Ship'
+        },
         highscores: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'highscores'
+                ref: 'Highscore'
             }
         ]
         
