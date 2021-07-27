@@ -22,8 +22,8 @@ const typeDefs = gql`
     }
 
     type Highscore {
-        user_id: ID
-        ship_id: ID
+        user_id: User
+        ship_id: Ship
         score: Int
         time_alive: Int  
         enemies_killed: Int
@@ -34,6 +34,7 @@ const typeDefs = gql`
     type Query {
         me: User
         getUserHighScore(user_id: ID): [Highscore]
+        getTop25: [Highscore]
     }
 
     type Auth {
