@@ -6,7 +6,9 @@ const typeDefs = gql`
     type User {
         _id: ID
         username: String
-        email: String    
+        email: String
+        current_ship: Ship
+        highscores: [Highscore]    
     }
 
     type Ship {
@@ -20,8 +22,8 @@ const typeDefs = gql`
     }
 
     type Highscore {
-        user_id: String
-        ship_id: String
+        user_id: User
+        ship_id: Ship
         score: Int
         time_alive: Int  
         enemies_killed: Int
@@ -32,6 +34,7 @@ const typeDefs = gql`
     type Query {
         me: User
         getUserHighScore(user_id: ID): [Highscore]
+        getTop25: [Highscore]
     }
 
     type Auth {
@@ -41,10 +44,10 @@ const typeDefs = gql`
   
     type Mutation {
         login(email: String!, password: String!): User
-        addUser(username: String!, email: String!, password: String!): User
+        addUser(username: String!, email: String!, password: String!, current_ship: ID): User
         changeShip(user_id: ID, ship_id: ID): User
+        addHighscore(user_id: ID, ship_id: ID, score: Int, time_alive: Int, enemies_killed: Int, bad_code_blasted: Int): Highscore
     }
 `;
 
-// export the typeDefs
 module.exports = typeDefs;

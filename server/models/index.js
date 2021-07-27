@@ -1,3 +1,5 @@
-const User = require('./User');
-
-module.exports = { User };
+module.exports = { 
+    User: require('./User'),
+    Highscore: require('./Highscore'),
+    Ship: require('./Ship')
+};
