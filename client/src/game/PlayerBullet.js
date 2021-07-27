@@ -33,11 +33,6 @@ class PlayerBullet {
             return true;
         }
     }
-
-    destroy()
-    {
-
-    }
 }
 
 export default PlayerBullet;

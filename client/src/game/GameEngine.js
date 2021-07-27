@@ -2,6 +2,7 @@ import Scale from "./Scale";
 import Player from "./Player";
 import {isMobile} from 'react-device-detect';
 import MobileController from "./MobileController";
+import Background from "./Background";
 
 class GameEngine {
     constructor()
@@ -14,6 +15,8 @@ class GameEngine {
       this.firePressed = false;
       this.mobileController = null;
       this.initialize();
+      //get instance of background after canvas is scaled!
+      this.background = new Background(this.canvas, this.ctx);
       //request fullscreen
       //this.canvas.addEventListener("click",this.requestFullScreen.bind(this))
     }
@@ -91,6 +94,7 @@ class GameEngine {
     {
       //reset view before redraw
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.background.draw();
       this.player.draw();
       if(isMobile)
       {
