@@ -14,8 +14,8 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
         getUserHighScore: async (parent, args, context) => {
-            const userData = await User.findById(args.user_id).select('highscores');
-            return userData;
+            const scoreData = await Highscore.find({user_id: args.user_id})
+            return scoreData;
         }
     },
     Mutation: {
