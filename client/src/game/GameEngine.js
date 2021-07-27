@@ -11,6 +11,7 @@ class GameEngine {
       this.player = null;
       this.leftPressed = false;
       this.rightPressed = false;
+      this.firePressed = false;
       this.mobileController = null;
       this.initialize();
       //request fullscreen
@@ -62,6 +63,9 @@ class GameEngine {
       }
       else if(e.key == "Left" || e.key == "ArrowLeft") {
         this.rightPressed = true;
+      }else if(e.code === 'Space')
+      {
+        this.firePressed = true;
       }
     }
 
@@ -72,6 +76,9 @@ class GameEngine {
       }
       else if(e.key == "Left" || e.key == "ArrowLeft") {
         this.rightPressed = false;
+      }else if(e.code === 'Space')
+      {
+        this.firePressed = false;
       }
     }
 
@@ -95,8 +102,13 @@ class GameEngine {
         {
           this.rightPressed = true;
         }
+        if(this.mobileController.fireButton.pressed)
+        {
+          this.firePressed = true;
+        }
       }
 
+      //Player movement
       if(this.leftPressed) 
       {
         this.player.x += 3;
@@ -114,11 +126,35 @@ class GameEngine {
         }
       }
 
+      //Bullet handling
+      if(this.player.bulletsFired.length>0)
+      {
+        //update bullets
+        for(let a = 0;a<this.player.bulletsFired.length;a++)
+        {
+          //update individual bullet position
+          let bulletUpdate = this.player.bulletsFired[a].update();
+          //check result of update
+          if(!bulletUpdate)
+          {
+            //destroy bullet
+            this.player.destroyBullet(a);
+          }
+        } 
+      }
+      if(this.firePressed)
+      {
+        this.player.fire();
+      }
+
+
       if(isMobile)
       {
         this.rightPressed = false;
         this.leftPressed = false;
+        this.mobileController.fireButton.pressed = false;
       }
+      this.firePressed = false;
     }
 
 }
