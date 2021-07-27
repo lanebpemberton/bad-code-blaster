@@ -1,5 +1,4 @@
 import joystickIcon from "../styles/images/joy.png";
-import fireIcon from "../styles/images/fire.png"
 
  class JoyStick {
     constructor(canvas, ctx)
@@ -16,14 +15,7 @@ import fireIcon from "../styles/images/fire.png"
         this.boundsMultX = this.width * 1.1;
         this.boundsMultY = this.height * 1.3;
         this.buttonBounds = [this.x-this.boundsMultX,this.y-this.boundsMultY,this.x+this.boundsMultX,this.y+this.boundsMultY]
-        document.addEventListener("touchmove",this.preventDefaultScroll,{passive:false})
-        document.addEventListener("touchmove",this.updateJoystick.bind(this))
-        document.addEventListener("touchend",this.resetJoystick.bind(this))
-    }
-
-    preventDefaultScroll(e)
-    {
-        e.preventDefault();
+        this.activeTouchID = null;
     }
 
     checkButtonBounds(x,y)
@@ -35,13 +27,17 @@ import fireIcon from "../styles/images/fire.png"
         return false;
     }
 
-    updateJoystick(ev)
+    updateJoystick(touchEvent)
     {
-        var touchLocation = ev.targetTouches[0];
-        //check for bounds
-        if(this.checkButtonBounds(touchLocation.pageX,touchLocation.pageY))
+        //evaluate active id
+        if(this.activeTouchID === null)
         {
-            this.x = touchLocation.pageX;
+            this.activeTouchID = touchEvent.identifier
+        }
+        //check for bounds
+        if(this.checkButtonBounds(touchEvent.pageX,touchEvent.pageY))
+        {
+            this.x = touchEvent.pageX;
         }
     }
 

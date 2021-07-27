@@ -1,7 +1,7 @@
 import Scale from "./Scale";
 import Player from "./Player";
 import {isMobile} from 'react-device-detect';
-import JoyStick from "./Joystick";
+import MobileController from "./MobileController";
 
 class GameEngine {
     constructor()
@@ -11,10 +11,10 @@ class GameEngine {
       this.player = null;
       this.leftPressed = false;
       this.rightPressed = false;
-      this.joystick = null;
+      this.mobileController = null;
       this.initialize();
       //request fullscreen
-      this.canvas.addEventListener("click",this.requestFullScreen.bind(this))
+      //this.canvas.addEventListener("click",this.requestFullScreen.bind(this))
     }
 
     initialize()
@@ -47,8 +47,7 @@ class GameEngine {
       //setup controls based on device
       if(isMobile)
       {
-        console.log("make new joy");
-        this.joystick = new JoyStick(this.canvas, this.ctx);
+        this.mobileController = new MobileController(this.canvas, this.ctx);
       }else
       {
         document.addEventListener("keydown", this.controllerKeyDown.bind(this), false);
@@ -88,11 +87,11 @@ class GameEngine {
       this.player.draw();
       if(isMobile)
       {
-        this.joystick.draw();
-        if(this.joystick.x>this.joystick.originalX)
+        this.mobileController.draw();
+        if(this.mobileController.joystick.x>this.mobileController.joystick.originalX)
         {
           this.leftPressed = true;
-        }else if(this.joystick.x<this.joystick.originalX)
+        }else if(this.mobileController.joystick.x<this.mobileController.joystick.originalX)
         {
           this.rightPressed = true;
         }
@@ -114,7 +113,7 @@ class GameEngine {
           this.player.x = 0;
         }
       }
-      
+
       if(isMobile)
       {
         this.rightPressed = false;
