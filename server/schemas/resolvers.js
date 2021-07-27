@@ -14,7 +14,11 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
         getUserHighScore: async (parent, args, context) => {
-            const scoreData = await Highscore.find({user_id: args.user_id})
+            const scoreData = await Highscore.find({user_id: args.user_id}).populate('ship_id')
+            return scoreData;
+        },
+        getTop25: async (parent, args, context) => {
+            const scoreData = await Highscore.find({}).limit(25).sort({ score: -1 }).populate('user_id').populate('ship_id')
             return scoreData;
         }
     },
