@@ -5,6 +5,10 @@ import PlayerBullet from "./PlayerBullet";
 //Line 3 is an object where the keys are ship_name or _id, and values are the path to the image.
 //We will need to import them all in the same way as above on line 1. 
 
+//const shipImgMap = {}
+//Line 3 is an object where the keys are ship_name or _id, and values are the path to the image.
+//We will need to import them all in the same way as above on line 1. 
+
 class Player {
     constructor(canvas, ctx) //In addition to the above comments, we will add a constructor argument to declare which ship is selected
     {
