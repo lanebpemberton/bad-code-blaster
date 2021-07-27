@@ -13,11 +13,8 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
         getUserHighScore: async (parent, args, context) => {
-            if (args.user_id) {
-                const userData = await User.findById(args.user_id).select('highscores');
-                return userData;
-            }
-            throw new AuthenticationError('Not logged in, or no user_id passed.');
+            const userData = await User.findById(args.user_id).select('highscores');
+            return userData;
         }
     },
     Mutation: {
@@ -38,6 +35,37 @@ const resolvers = {
             }
             // const token = signToken(user);
             return user;
+        }, 
+        changeShip: async (parent, args, context) => {
+            const userData = await User.findByIdAndUpdate(args.user_id, 
+                {
+                    $set: {
+                        current_ship: args.ship_id
+                    }
+                }
+            );
+
+            return userData;            
+        },
+        addHighscore: async (parent, args, context) => {
+            const newHighscore = {
+                user_id: args.user_id,
+                ship_id: args.ship_id,
+                score: args.score,
+                time_alive: args.time_alive,
+                enemies_killed: args.enemies_killed,
+                bad_code_blasted: args.bad_code_blasted,
+                timestamp: args.timestamp
+            }
+            const userData = await User.findByIdAndUpdate(args.user_id, 
+                {
+                    $push: {
+                        highscores: newHighscore
+                    }
+                }
+            )
+
+            return userData;
         }
     }
 };
