@@ -1,0 +1,54 @@
+
+[    
+    {   
+        "ship_name": "Tyr",
+        "speed": "4",
+        "hull_strength": "4",
+        "ship_description": "God of War ship one of the best.",
+        "sprite": "../images/ship1.png", 
+        "width": "45", 
+        "height": "31"
+    },
+
+     {
+        "ship_name": "Baldr",
+        "speed": "2",
+        "hull_strength": "3",
+        "ship_description": "God of Justice a basic ship",
+        "sprite": "../images/ship2.png", 
+        "width": "45", 
+        "height": "31"
+    },
+
+    {
+        "ship_name": "Loki",
+        "speed": "4",
+        "hull_strength": "3",
+        "ship_description": "A God of pranks and mischief making one the faster ships",
+        "sprite": "../images/ship3.png", 
+        "width": "45", 
+        "height": "31"
+    },
+
+     {
+        "ship_name": "Nancy",
+        "speed": "4",
+        "hull_strength": "4",
+        "ship_description": "Lane's ship, would not recommend flying. broken exhaust valve, can't jump to light speed.",
+        "sprite": "../images/ship4.png", 
+        "width": "45", 
+        "height": "31"
+    },
+
+    
+
+    {
+        "ship_name": "Odin",
+        "speed": "5",
+        "hull_strength": "5",
+        "ship_description": "God of Gods one of the best of the best ships",
+        "sprite": "../images/ship5.png", 
+        "width": "45", 
+        "height": "31"
+    }
+]
