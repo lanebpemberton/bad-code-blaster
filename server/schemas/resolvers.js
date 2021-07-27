@@ -44,7 +44,7 @@ const resolvers = {
                         current_ship: args.ship_id
                     }
                 }
-            );
+            ).populate('Ship');
 
             return userData;            
         },
