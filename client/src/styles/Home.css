@@ -8,8 +8,9 @@
 
 .mobile.background{
     background-image: url("./images/mobile\ bg\ only\ color\ matched.png");
+    background-size: cover;
     width: 100%;
-    height: 100%
+    height: 100%;
 }
 
 .default.border{
@@ -21,7 +22,8 @@
 }
 
 .mobile.border{
-    background-image: url("./images/individuals/border.png");
+    /* background-image: url("./images/individuals/border.png"); */
+    border: 2px red dashed;
     width: 100%;
     height: 100%
 }
