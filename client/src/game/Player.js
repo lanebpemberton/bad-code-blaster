@@ -21,6 +21,7 @@ class Player {
         this.x = (this.canvas.width-this.width)/2;
         this.y = .9 * this.canvas.height;
         this.bulletsFired = [];
+        this.enemies_killed = 0;
         // this.y = 60;
     }
 
