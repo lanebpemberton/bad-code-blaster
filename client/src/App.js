@@ -16,7 +16,7 @@ const styles = {
 // In our main App component, we are rendering a single instance of a game canvas
 function App() {
   return (
-    <div style={styles}>
+    <div style={styles.body}>
       <Home />
     </div>
   );
