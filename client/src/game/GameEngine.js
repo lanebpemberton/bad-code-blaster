@@ -135,18 +135,21 @@ class GameEngine {
       const chanceToSpawn = 0.03
       const spawnRoll = Math.random()
 
-      if (chanceToSpawn >= spawnRoll) {
+      if (chanceToSpawn >= spawnRoll && this.enemies.length < 1) {
         // add enemy to array
         this.enemies.push(new Enemy(this.canvas, this.ctx))
       }
-      //Update Enemies
-      this.enemies.forEach((enemy, index) => {
-        const enemyReachedBottom = enemy.update()
+      //Update Enemies - start at back so managing the current index and size is simpler
+      for(let enemyIndex = this.enemies.length - 1; enemyIndex >= 0; enemyIndex--) {
+        const enemy = this.enemies[enemyIndex]
+        const enemyReachedBottom = !enemy.update()
 
         if (enemyReachedBottom) {
           // handle enemy reaching bottom
+          this.enemies.splice(enemyIndex, 1)
+          // alert('game over')
         }
-      })
+      }
 
       //Bullet handling
       if(this.player.bulletsFired.length>0)
@@ -154,6 +157,7 @@ class GameEngine {
         //update bullets
         for(let a = 0;a<this.player.bulletsFired.length;a++)
         {
+          const bullet = this.player.bulletsFired[a]
           //update individual bullet position
           let bulletUpdate = this.player.bulletsFired[a].update();
           //check result of update
@@ -163,6 +167,13 @@ class GameEngine {
             this.player.destroyBullet(a);
           } else {
             // check if any enemy overlaps with this.player.bulletsFired[a]
+            const enemyHit = this.enemies.findIndex(enemy => enemy.collidesWith(bullet)) 
+
+            if (enemyHit > -1) {
+              this.enemies.splice(enemyHit, 1)
+              this.player.enemies_killed++;
+              console.log(this.player.enemies_killed)
+            }
           }
         } 
       }
