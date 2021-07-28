@@ -44,9 +44,9 @@ async function onLogin(event)
         return;
     }
 }
-document
-//   .querySelector("loginButton")
-  .addEventListener('click', onLogin);
+// document
+// //   .querySelector("loginButton")
+//   .addEventListener('click', onLogin);
 
 
 
@@ -97,7 +97,7 @@ document
 
 
 /////////////
-
+//function for hiding signup and login
 function hideElem() {
     var cardFront = document.getElementById("cardFront");
     var cardBack = document.getElementById("cardBack");
@@ -122,35 +122,35 @@ function LoginUser() {
   return (
     <body>
     <section>
-       <div class="card">
-           <div class="inner-box">
+       <div className="card">
+           <div className="inner-box">
                
-               <div class="card-front" id="cardFront">
-                   <h2 class="card-text">LOGIN</h2>
+               <div className="card-front" id="cardFront">
+                   <h2 className="card-text">LOGIN</h2>
                    <form className="login-form">
-                       <input type="email" id="email-login" class="input-box"
+                       <input type="email" id="email-login" className="input-box"
                        placeholder="Your Email here" required/>
-                       <input type="password" id="password-login" class="input-box"
+                       <input type="password" id="password-login" className="input-box"
                        placeholder="Your Password here" required/>
-                       <button type="submit" id="loginButton" onClick={onLogin} class="submit-btn card-text">Submit</button> 
+                       <button type="submit" id="loginButton" onClick={onLogin} className="submit-btn card-text">Submit</button> 
                        <input type="checkbox"/><span>Remember Me</span>
                    </form>
-                   <button type="button" id="signupShow" onClick={hideElem} class="btn">Sign Up</button>
+                   <button type="button" id="signupShow" onClick={hideElem} className="btn">Sign Up</button>
                    <a href="">Forgot Password</a>
                </div>
-               <div class="card-back" id="cardBack" style={{display:'none'}}>
+               <div className="card-back" id="cardBack" style={{display:'none'}}>
                 <h2>Sign Up</h2>
                 <form>
-                    <input type="email" id="signupEmail" class="input-box"
+                    <input type="email" id="signupEmail" className="input-box"
                     placeholder="Your Email here" required/>
-                    <input type="password" id="signupPassword" class="input-box"
+                    <input type="password" id="signupPassword" className="input-box"
                     placeholder="Your Password here" required/>
                     
                     <input type="checkbox"/><span>Remember Me</span>
                 </form>
-                <button type="button" id="signUpbtn" class="btn card-text">Sign Up</button>
+                <button type="button" id="signUpbtn" className="btn card-text">Sign Up</button>
                 <a href="">Forgot Password</a>
-                <button type="submit" id="loginShow" onClick={hideElem} class="submit-btn">Already Have an account</button>
+                <button type="submit" id="loginShow" onClick={hideElem} className="submit-btn">Already Have an account</button>
 
                </div>
               
