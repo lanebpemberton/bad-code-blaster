@@ -57,3 +57,15 @@ export const MUTATION_ADD_HIGHSCORE = gql`
          }
   }
 `;
+
+// # export const MUTATION_SHIP = gql`
+// #  mutation diffShip($ship_name: String, $speed: Int, $hull_strength: Int, $ship_description: String, $sprite: String, $width: Int, $height: Int) {
+// #    diffShip(ship_name: $ship_name, speed: $speed, hull_strength: $hull_description, ship_description: $ship_description, sprite: $sprite, width: $width, height: $height)
+// #     ship_name
+// #     speed
+// #     hull_strength
+// #     ship_description
+// #     sprite
+// #     width
+// #     height
+// # }`;
