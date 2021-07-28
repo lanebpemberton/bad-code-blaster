@@ -24,7 +24,7 @@ class Player {
         this.enemies_killed = 0;
         // this.y = 60;
     }
-
+    
     draw()
     {
         this.ctx.drawImage(this.sprite,this.x,this.y,this.width,this.height);
@@ -39,6 +39,11 @@ class Player {
     {
         this.bulletsFired.splice(index,1);
     }   
+    
+    getScore()
+    {
+        return this.enemies_killed * 50
+    }
 }
 
 export default Player;

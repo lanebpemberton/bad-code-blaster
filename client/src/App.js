@@ -1,5 +1,10 @@
 import React from 'react';
-import GameCanvas from './components/GameCanvas';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+import Game from './components/Game';
 import './styles/Global.css';
 
 const styles = {
@@ -16,7 +21,19 @@ const styles = {
 function App() {
   return (
     <div style={styles.body}>
-      <GameCanvas />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <h1>Login component goes here</h1>
+          </Route>
+          <Route exact path="/home">
+            <h1>Home component goes here</h1>
+          </Route>
+          <Route exact path="/play">
+            <Game />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
