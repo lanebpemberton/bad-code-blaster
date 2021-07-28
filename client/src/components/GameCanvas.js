@@ -6,11 +6,7 @@ import '../styles/GameCanvas.css';
 
 class GameCanvas extends Component
 {
-    componentDidMount()
-    {
-        //initialize game engine
-        let gameEngine = new GameEngine();
-    }
+
     render()
     {
         return (<canvas id="gameCanvas" className="gameCanvas"></canvas>);

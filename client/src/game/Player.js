@@ -16,14 +16,15 @@ class Player {
         this.ctx = ctx;
         this.sprite = new Image();
         this.sprite.src = logo;
-        this.width = 45;
-        this.height = 31;
+        this.width = 70;
+        this.height = 50;
         this.x = (this.canvas.width-this.width)/2;
         this.y = .9 * this.canvas.height;
         this.bulletsFired = [];
+        this.enemies_killed = 0;
         // this.y = 60;
     }
-
+    
     draw()
     {
         this.ctx.drawImage(this.sprite,this.x,this.y,this.width,this.height);
@@ -38,6 +39,11 @@ class Player {
     {
         this.bulletsFired.splice(index,1);
     }   
+    
+    getScore()
+    {
+        return this.enemies_killed * 50
+    }
 }
 
 export default Player;
