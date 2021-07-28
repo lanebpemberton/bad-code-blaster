@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserView, MobileView } from 'react-device-detect';
 import "../styles/Home.css";
+// import MyTable from './Highscore';
 
 const Home = () => {
 
@@ -14,12 +15,13 @@ const Home = () => {
                         </div>
                         <div className="default high">
                             <h1 id= "title-font"className="title font">Highscores!</h1>
+                            {/* <Highscore></Highscore> */}
                             <div className="default customize">
                                 <h1 id= "title-font"className="title font">Customize!</h1>
                             </div>
-                            <div className="default login">
-                                <h1 id= "title-font"className="title font">Login!</h1>
-                            </div>
+                        </div>
+                        <div className="default login">
+                            <h1 id="title-font"className="title font">Login!</h1>
                         </div>
                     </div>
                     
