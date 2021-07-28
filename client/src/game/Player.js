@@ -16,8 +16,8 @@ class Player {
         this.ctx = ctx;
         this.sprite = new Image();
         this.sprite.src = logo;
-        this.width = 45;
-        this.height = 31;
+        this.width = 70;
+        this.height = 50;
         this.x = (this.canvas.width-this.width)/2;
         this.y = .9 * this.canvas.height;
         this.bulletsFired = [];
