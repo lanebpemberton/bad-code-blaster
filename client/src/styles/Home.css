@@ -56,8 +56,8 @@
     align-items: center;
 }
 .playText{
-    font-size: 3em;
-    top: 130px;
+    font-size: 6em;
+    top: 120px;
     left: 35%;
 }
 
@@ -78,8 +78,9 @@
 }
 
 .customizeText{
-    font-size: 2.5em;
+    font-size: 3.5em;
     margin-left: -2em;
+    margin-top: 10px;
 }
 
 .hide{
