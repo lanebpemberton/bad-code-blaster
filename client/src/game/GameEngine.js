@@ -3,6 +3,7 @@ import Player from "./Player";
 import {isMobile} from 'react-device-detect';
 import MobileController from "./MobileController";
 import Background from "./Background";
+import Enemy from "./Enemy";
 
 class GameEngine {
     constructor()
@@ -10,6 +11,7 @@ class GameEngine {
       this.canvas = document.getElementById("gameCanvas");
       this.ctx = this.canvas.getContext("2d");
       this.player = null;
+      this.enemies = [];
       this.leftPressed = false;
       this.rightPressed = false;
       this.firePressed = false;
@@ -129,6 +131,22 @@ class GameEngine {
           this.player.x = 0;
         }
       }
+      //Should draw enemy
+      const chanceToSpawn = 0.03
+      const spawnRoll = Math.random()
+
+      if (chanceToSpawn >= spawnRoll) {
+        // add enemy to array
+        this.enemies.push(new Enemy(this.canvas, this.ctx))
+      }
+      //Update Enemies
+      this.enemies.forEach((enemy, index) => {
+        const enemyReachedBottom = enemy.update()
+
+        if (enemyReachedBottom) {
+          // handle enemy reaching bottom
+        }
+      })
 
       //Bullet handling
       if(this.player.bulletsFired.length>0)
@@ -143,6 +161,8 @@ class GameEngine {
           {
             //destroy bullet
             this.player.destroyBullet(a);
+          } else {
+            // check if any enemy overlaps with this.player.bulletsFired[a]
           }
         } 
       }
