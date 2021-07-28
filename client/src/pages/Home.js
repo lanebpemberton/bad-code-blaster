@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserView, MobileView } from 'react-device-detect';
-import CustomizeImg from '../styles/images/individuals/customize.png'
+import HelpImg from '../styles/images/individuals/help\ hex\ match.png'
 import "../styles/Home.css";
 // import MyTable from './Highscore';
 
@@ -14,17 +14,17 @@ const Home = () => {
                         <div className= "default title">
                         </div>
                         <div className="default high">
-                            <h1 className="title font">Highscores!</h1>
+                            <h1 className="title font highText">HIGHSCORES</h1>
                             {/* <Highscore></Highscore> */}
                         </div>
-                        <div className="default customize">
-                                <h1 className="title font">Customize!</h1>
+                        <div className="default customize centerContent">
+                                <a href="/customize"><h1 className="title font customizeText">CUSTOMIZE</h1></a>
                         </div>
-                        <div className="default help">
-                            <h1 className="title font">Help</h1>
+                        <div className="default help centerContent">
+                            <a href="/help" className="helpImg centerContent"><img alt='Help' src={HelpImg}></img></a>
                         </div>
-                        <div className="default play">
-                            <h1 id="title-font"className="title font">Play now!</h1>
+                        <div className="default play centerContent">
+                            <a href="/play"><h1 id="title-font"className="title font playText">PLAY NOW</h1></a>
                         </div>
                     </div>
                     
