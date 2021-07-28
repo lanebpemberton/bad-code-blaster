@@ -4,7 +4,6 @@ function Scale(canvas,ctx)
     let heightRatio = .6;
     canvas.height = window.innerHeight;
     canvas.width = canvas.height * heightRatio;
-    console.log(canvas.height);
 
     const originalWidth = canvas.width;
     const originalHeight = canvas.height;
