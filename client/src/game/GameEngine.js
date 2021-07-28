@@ -16,6 +16,7 @@ class GameEngine {
       this.rightPressed = false;
       this.firePressed = false;
       this.mobileController = null;
+      this.running = false;
       this.initialize();
       //get instance of background after canvas is scaled!
       this.background = new Background(this.canvas, this.ctx);
@@ -33,6 +34,7 @@ class GameEngine {
       this.player = new Player(this.canvas, this.ctx);
       this.player.draw();
       //start game engine running every 10 milliseconds
+      setInterval(this.runEngine.bind(this),10);
       this.startEngine();
     }
 
@@ -89,7 +91,12 @@ class GameEngine {
 
     startEngine()
     {
-      setInterval(this.runEngine.bind(this),10);
+      this.running = true;
+    }
+
+    stop()
+    {
+      this.running = false;
     }
 
     runEngine()
@@ -114,84 +121,92 @@ class GameEngine {
         }
       }
 
-      //Player movement
-      if(this.leftPressed) 
+      if (this.running)
       {
-        this.player.x += 3;
-        if (this.player.x + this.player.width > this.canvas.width)
-        {
-          this.player.x = this.canvas.width - this.player.width;
-        }
-      }
-      else if(this.rightPressed)
-      {
-        this.player.x -= 3;
-        if (this.player.x < 0)
-        {
-          this.player.x = 0;
-        }
-      }
-      //Should draw enemy
-      const chanceToSpawn = 0.03
-      const spawnRoll = Math.random()
 
-      if (chanceToSpawn >= spawnRoll && this.enemies.length < 1) {
-        // add enemy to array
-        this.enemies.push(new Enemy(this.canvas, this.ctx))
-      }
-      //Update Enemies - start at back so managing the current index and size is simpler
-      for(let enemyIndex = this.enemies.length - 1; enemyIndex >= 0; enemyIndex--) {
-        const enemy = this.enemies[enemyIndex]
-        const enemyReachedBottom = !enemy.update()
-
-        if (enemyReachedBottom) {
-          // handle enemy reaching bottom
-          this.enemies.splice(enemyIndex, 1)
-          // alert('game over')
-        }
-      }
-
-      //Bullet handling
-      if(this.player.bulletsFired.length>0)
-      {
-        //update bullets
-        for(let a = 0;a<this.player.bulletsFired.length;a++)
+        //Player movement
+        if(this.leftPressed) 
         {
-          const bullet = this.player.bulletsFired[a]
-          //update individual bullet position
-          let bulletUpdate = this.player.bulletsFired[a].update();
-          //check result of update
-          if(!bulletUpdate)
+          this.player.x += 3;
+          if (this.player.x + this.player.width > this.canvas.width)
           {
-            //destroy bullet
-            this.player.destroyBullet(a);
-          } else {
-            // check if any enemy overlaps with this.player.bulletsFired[a]
-            const enemyHit = this.enemies.findIndex(enemy => enemy.collidesWith(bullet)) 
+            this.player.x = this.canvas.width - this.player.width;
+          }
+        }
+        else if(this.rightPressed)
+        {
+          this.player.x -= 3;
+          if (this.player.x < 0)
+          {
+            this.player.x = 0;
+          }
+        }
+        //Should draw enemy
+        const chanceToSpawn = 0.03
+        const spawnRoll = Math.random()
 
-            if (enemyHit > -1) {
-              this.enemies.splice(enemyHit, 1)
-              this.player.enemies_killed++;
-              console.log(this.player.enemies_killed)
+        if (chanceToSpawn >= spawnRoll && this.enemies.length < 1) {
+          // add enemy to array
+          this.enemies.push(new Enemy(this.canvas, this.ctx))
+        }
+        //Update Enemies - start at back so managing the current index and size is simpler
+        for(let enemyIndex = this.enemies.length - 1; enemyIndex >= 0; enemyIndex--) {
+          const enemy = this.enemies[enemyIndex]
+          const enemyReachedBottom = !enemy.update()
+
+          if (enemyReachedBottom) {
+            // handle enemy reaching bottom
+            this.enemies.splice(enemyIndex, 1)
+            
+            if (this.onGameOver) {
+              this.onGameOver()
             }
           }
-        } 
-      }
-      if(this.firePressed)
-      {
-        this.player.fire();
-      }
+        }
+
+        //Bullet handling
+        if(this.player.bulletsFired.length>0)
+        {
+          //update bullets
+          for(let a = 0;a<this.player.bulletsFired.length;a++)
+          {
+            const bullet = this.player.bulletsFired[a]
+            //update individual bullet position
+            let bulletUpdate = this.player.bulletsFired[a].update();
+            //check result of update
+            if(!bulletUpdate)
+            {
+              //destroy bullet
+              this.player.destroyBullet(a);
+            } else {
+              // check if any enemy overlaps with this.player.bulletsFired[a]
+              const enemyHit = this.enemies.findIndex(enemy => enemy.collidesWith(bullet)) 
+
+              if (enemyHit > -1) {
+                this.enemies.splice(enemyHit, 1)
+                this.player.enemies_killed++;
+                if (this.onEnemyKilled) {
+                  this?.onEnemyKilled()
+                }
+              }
+            }
+          } 
+        }
+        if(this.firePressed)
+        {
+          this.player.fire();
+        }
 
 
-      if(isMobile)
-      {
-        this.rightPressed = false;
-        this.leftPressed = false;
-        this.mobileController.fireButton.pressed = false;
+        if(isMobile)
+        {
+          this.rightPressed = false;
+          this.leftPressed = false;
+          this.mobileController.fireButton.pressed = false;
+        }
+        this.firePressed = false;
+        }
       }
-      this.firePressed = false;
-    }
-
 }
 
 export default GameEngine;
