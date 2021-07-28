@@ -4,6 +4,7 @@
   "description": "Client and server packages for bad-code-blaster.",
   "main": "server/server.js",
   "scripts": {
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
