@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Home from './pages/Home';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,11 +11,11 @@ import './styles/Global.css';
 
 const styles = {
   body:{
-    padding:0,
-    margin:0,
-    justifyContent:'center',
-    alignContent:'center',
-    display:'flex'
+    backgroundImage: `url("./styles/images/bg-color-matched-to-logo.jpg")`,
+    width: '100%',
+    height: '100%',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover'
   }
 }
 
@@ -27,7 +29,7 @@ function App() {
             <h1>Login component goes here</h1>
           </Route>
           <Route exact path="/home">
-            <h1>Home component goes here</h1>
+            <Home />
           </Route>
           <Route exact path="/play">
             <Game />
