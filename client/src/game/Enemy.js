@@ -1,4 +1,4 @@
-import bullet from "../styles/images/bullet.png";
+import alien from "../styles/images/alien.png";
 import CollidableEntity from "./CollidableEntity";
 
 const enemyTypes = ['foo', 'bar', 'baz']
@@ -6,8 +6,8 @@ const enemyTypes = ['foo', 'bar', 'baz']
 class Enemy extends CollidableEntity {
     constructor(canvas, ctx)
     {
-        const width = 50;
-        const height = 15;
+        const width = 80;
+        const height = 20;
         const numLanes = Math.floor(canvas.width / width)
         const x = Math.floor(Math.random() * numLanes) * 50; //todo: randomly determine x coord
         const y = 0;
@@ -20,7 +20,7 @@ class Enemy extends CollidableEntity {
         this.canvas = canvas;
         this.damage = 6;
         this.sprite = new Image();
-        this.sprite.src = bullet;
+        this.sprite.src = alien;
         this.speed = 6;
     }
 

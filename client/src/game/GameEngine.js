@@ -141,7 +141,7 @@ class GameEngine {
             this.player.x = 0;
           }
         }
-        //Should draw enemy
+        //Draw enemies - RNG to append enemies to rendering array
         const chanceToSpawn = 0.03
         const spawnRoll = Math.random()
 
