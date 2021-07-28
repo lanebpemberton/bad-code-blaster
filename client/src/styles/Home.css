@@ -1,0 +1,27 @@
+.default.background{
+    background-image: url("./images/bg-color-matched-to-logo.jpg");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.mobile.background{
+    background-image: url("./images/mobile\ bg\ only\ color\ matched.png");
+    width: 100%;
+    height: 100%
+}
+
+.default.border{
+    background-image: url("./images/individuals/border.png");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.mobile.border{
+    background-image: url("./images/individuals/border.png");
+    width: 100%;
+    height: 100%
+}
