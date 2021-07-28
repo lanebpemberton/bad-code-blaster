@@ -30,17 +30,49 @@
 
 .default.title{
     background-image: url("./images/individuals/title\ menu.png");
-    background-position: right;
+    background-position: center;
     background-size: cover;
-    width: 25%;
-    height: 25%;
-    margin: auto;
-    display: flex; 
+    width: 15%;
+    height: 15%;
+    margin-left: 43%;
+    
 }
 
 .title.font{
-    font-size: 100px !important;
-    text-align: center !important;
-    margin: auto !important;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 50px;
 }
 
+.hide{
+    color: transparent;
+}
+
+.default.high{
+    background-image: url("./images/individuals/title\ menu.png");
+    background-position: center;
+    background-size: cover;
+    width: 15%;
+    height: 55%;
+    margin-left: 15%;
+}
+
+.default.customize{
+    background-image: url("./images/individuals/large\ menu.png");
+    background-position: center;
+    background-size: cover;
+    width: 165%;
+    height: 60%;
+    margin-left: 350%;
+}
+
+.default.login{
+    background-image: url("./images/individuals/buttons\ menu.png");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 30%;
+    margin-left: 190%;
+    margin-bottom: 10000%;
+    margin-top: -10%;
+}
