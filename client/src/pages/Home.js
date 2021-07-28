@@ -9,9 +9,8 @@ const Home = () => {
             <BrowserView style={{height: '100%'}}>
                 <div className="default background">
                     <div className="default border">
-                        <h2 className="hide">HI</h2>
                         <div className= "default title">
-                            <h1 id= "title-font"className="title font">Bad Code Blaster!</h1>
+                            <h1 id="title-font"className="title font">Bad Code Blaster!</h1>
                         </div>
                         <div className="default high">
                             <h1 id= "title-font"className="title font">Highscores!</h1>
