@@ -61,7 +61,7 @@ const shipStyles = {
 }
 const Ship = ({ shipImageUrl }) => {
     return (
-        <img src={shipImageUrl} style={shipStyles} />
+        <img src={shipImageUrl} alt="Player's Ship" style={shipStyles} />
     )
 }
 
