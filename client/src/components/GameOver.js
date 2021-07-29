@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import background from '../styles/images/individuals/buttons\ menu.png'
 const height = 200
 const width = 200
 
@@ -10,7 +10,9 @@ const getStyles = (overrides) => ({
     fontSize: 20,
     height,
     width,
-    background: 'pink',
+    backgroundImage: background,
+    backgroundSize: '100% 100%',
+    padding: 8,
     //font stuff etc.
     ...overrides
 })

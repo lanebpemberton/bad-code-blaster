@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserView, MobileView } from 'react-device-detect';
 import HelpImg from '../styles/images/individuals/help\ hex\ match.png'
 import "../styles/Home.css";
-// import MyTable from './Highscore';
+import Highscore from './Highscore';
 
 const Home = () => {
 
@@ -15,7 +15,7 @@ const Home = () => {
                         </div>
                         <div className="default high">
                             <h1 className="title font highText">HIGHSCORES</h1>
-                            {/* <Highscore></Highscore> */}
+                            <Highscore></Highscore>
                         </div>
                         <div className="default customize centerContent">
                                 <a href="/customize"><h1 className="title font customizeText">CUSTOMIZE</h1></a>
@@ -31,8 +31,26 @@ const Home = () => {
                 </div>
             </BrowserView>
             <MobileView style={{height: '100%'}}>
-                <div className="mobile background">
-                    
+                <div className="mobile background" style={{display:'flex',justifyContent:'center',flexDirection:'column'}}>
+                    <div className="mobile title">
+                    </div>
+                    <div className="mobile cluster">
+                        <div className="mobile highscore">
+                        </div>
+                        <div className="mobile customize centerContent">
+                            <a href="/customize"><h1 className="title font customizeText">CUSTOMIZE</h1></a>
+                        </div>
+                        <div className="mobile help centerContent">
+                            <a href="/help" className="helpImg centerContent"><img alt='Help' src={HelpImg}></img></a>
+                        </div>
+                    </div>
+                    <div className="playMenu">
+                        <a href="/play" className="playImg centerContent"><img alt='Help' src={HelpImg}></img></a>
+                    </div>
+
+
+
+
                 </div>
             </MobileView>
         </React.Fragment>

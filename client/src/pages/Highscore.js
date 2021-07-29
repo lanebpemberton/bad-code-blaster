@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER_HIGHSCORE } from '../utils/queries'
 
-const highscoretb = tbHigh({
-    table: {
-        minwidth: 650,
-    },
-});
+export default function Highscore() {
+    const { loading, error, data } = useQuery(QUERY_USER_HIGHSCORE, {
+        variables: {
+            user_id: '60ff4a746d4e5e393cd036de'
+        }
+    });
 
-function createData(username, score, ship, kills, deaths) {
-    return { username, score, ship, kills, deaths };
-} 
-
-const rows = [
-  createData('Brent SkyWalker', 1000, Millenium, 1500, 0),
-  createData('Chan Man Can', 800, Hulk, 1100, 2),
-  createData('Doge Trenton', 500, Roof, 600, 10),
-  createData('Lame Came', 100, Ryan, 20, 80),
-];
-
-export default function BasicTable() {
-    const classes = useStyles();
-
-    return(
-
+    return (
+        <React.Fragment>
+            {loading && <h1 className="title font">Loading...</h1>}
+            {!loading && data.getUserHighScore && (
+                <div style={{ paddingLeft: '2em', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
+                    {data.getUserHighScore.map(
+                        (highScore, index) => (
+                            <div key={`highscore_${index}`}>
+                                <h2 className="title font">{index+1}: {highScore.score}, {highScore.timestamp}</h2>
+                            </div>
+                        )
+                    )}
+                </div>
+            )}
+        </React.Fragment>
     )
 }
 
