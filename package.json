@@ -8,8 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-client": "cd client && npm ci",
     "install-server": "cd server && npm ci",
-    "install": "npm ci && npm run install-client && npm run install-server",
-    "build": "cd client && npm run build",
+    "build": "npm run install-client && npm run install-server && cd client && npm run build",
     "start": "npm run develop"
   },
   "repository": {
