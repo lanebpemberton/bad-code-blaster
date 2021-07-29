@@ -1,3 +1,4 @@
+
 import React, { useCallback, useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client'
 import GameEngine from '../game/GameEngine';
@@ -5,6 +6,7 @@ import GameCanvas from './GameCanvas';
 import ScoreOverlay from './ScoreOverlay';
 import GameOver from './GameOver';
 import { MUTATION_ADD_HIGHSCORE } from '../utils/mutations';
+
 
 const Game = () => {
     const [gameOver, setGameOver] = useState(false);

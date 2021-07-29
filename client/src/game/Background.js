@@ -9,6 +9,7 @@ class Background {
             this.imgH = this.img.height * this.scale;
         }
         this.img.src = background;
+
         this.width = canvas.width;
         this.height = canvas.height;
         this.x = 0;

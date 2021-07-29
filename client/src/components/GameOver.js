@@ -37,6 +37,7 @@ const GameOver = ({ onReplayClick }) => {
             <h3>Game Over</h3>
             <button id="playAgainButton" onClick={onReplayClick}>Play Again?</button>
             <button id="goHomeButton" onClick={() => history.push('/home')}>Go Home</button>
+
         </div>
     )
 }   

@@ -1,13 +1,15 @@
 import React from 'react';
-
 import Home from './pages/Home';
+
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom'
 import Game from './components/Game';
+
 import Customize from './components/Customize';
+
 import './styles/Global.css';
 
 const styles = {
@@ -20,8 +22,7 @@ const styles = {
 
 // In our main App component, we are rendering a single instance of a game canvas
 function App() {
-  return (
-    
+  return (  
     <Router>
       <Switch>
         <Route exact path="/">
@@ -40,7 +41,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
-    
+
   );
 }
 

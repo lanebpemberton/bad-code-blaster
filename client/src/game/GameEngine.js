@@ -6,6 +6,7 @@ import Background from "./Background";
 import Enemy from "./Enemy";
 import shipRelationships from "./ShipViews";
 
+
 class GameEngine {
     constructor()
     {
@@ -149,6 +150,7 @@ class GameEngine {
         const spawnRoll = Math.random()
 
         if (chanceToSpawn >= spawnRoll) {
+
           // add enemy to array
           this.enemies.push(new Enemy(this.canvas, this.ctx))
         }
@@ -192,6 +194,7 @@ class GameEngine {
                   this?.onEnemyKilled()
                 }
                 this.player.destroyBullet(a);
+
               }
             }
           } 
