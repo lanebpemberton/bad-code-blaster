@@ -1,14 +1,14 @@
-import React from 'react';
+// import React from 'react';
 
-// We declare an object called styles that will contain a few objects for card and heading styles
-// Notice that each key lists CSS styles in camel case
+// // We declare an object called styles that will contain a few objects for card and heading styles
+// // Notice that each key lists CSS styles in camel case
 
-import '../styles/loginuser.css';
-// In Navbar, we can assign a style from an object by using curly braces
-///login data send
+// import '../styles/loginuser.css';
+// // In Navbar, we can assign a style from an object by using curly braces
+// ///login data send
 
 
-// login function to change pages to game start
+// // login function to change pages to game start
 
 // const homeScreen = 
 
@@ -118,56 +118,56 @@ function hideElem() {
 
 
 
-function LoginUser() {
-  return (
-    <body>
-    <section>
-       <div className="card">
-           <div className="inner-box">
+// function LoginUser() {
+//   return (
+//     <body>
+//     <section>
+//        <div className="card">
+//            <div className="inner-box">
                
-               <div className="card-front" id="cardFront">
-                   <h2 className="card-text">LOGIN</h2>
-                   <form className="login-form">
-                       <input type="email" id="email-login" className="input-box"
-                       placeholder="Your Email here" required/>
-                       <input type="password" id="password-login" className="input-box"
-                       placeholder="Your Password here" required/>
-                       <button type="submit" id="loginButton" onClick={onLogin} className="submit-btn card-text">Submit</button> 
-                       <input type="checkbox"/><span>Remember Me</span>
-                   </form>
-                   <button type="button" id="signupShow" onClick={hideElem} className="btn">Sign Up</button>
-                   <a href="">Forgot Password</a>
-               </div>
-               <div className="card-back" id="cardBack" style={{display:'none'}}>
-                <h2>Sign Up</h2>
-                <form>
-                    <input type="username" id="signupUsername" className="input-box"
-                    placeholder="Your Username here" required/>
-                    <input type="email" id="signupEmail" className="input-box"
-                    placeholder="Your Email here" required/>
-                    <input type="password" id="signupPassword" className="input-box"
-                    placeholder="Your Password here" required/>
+//                <div className="card-front" id="cardFront">
+//                    <h2 className="card-text">LOGIN</h2>
+//                    <form className="login-form">
+//                        <input type="email" id="email-login" className="input-box"
+//                        placeholder="Your Email here" required/>
+//                        <input type="password" id="password-login" className="input-box"
+//                        placeholder="Your Password here" required/>
+//                        <button type="submit" id="loginButton" onClick={onLogin} className="submit-btn card-text">Submit</button> 
+//                        <input type="checkbox"/><span>Remember Me</span>
+//                    </form>
+//                    <button type="button" id="signupShow" onClick={hideElem} className="btn">Sign Up</button>
+//                    <a href="">Forgot Password</a>
+//                </div>
+//                <div className="card-back" id="cardBack" style={{display:'none'}}>
+//                 <h2>Sign Up</h2>
+//                 <form>
+//                     <input type="username" id="signupUsername" className="input-box"
+//                     placeholder="Your Username here" required/>
+//                     <input type="email" id="signupEmail" className="input-box"
+//                     placeholder="Your Email here" required/>
+//                     <input type="password" id="signupPassword" className="input-box"
+//                     placeholder="Your Password here" required/>
                    
-                    <input type="checkbox"/><span>Remember Me</span>
-                </form>
-                <button type="button" id="signUpbtn" onClick={onCreateUser} className="btn card-text">Sign Up</button>
-                <a href="">Forgot Password</a>
-                <button type="submit" id="loginShow" onClick={hideElem} className="submit-btn">Already Have an account</button>
+//                     <input type="checkbox"/><span>Remember Me</span>
+//                 </form>
+//                 <button type="button" id="signUpbtn" onClick={onCreateUser} className="btn card-text">Sign Up</button>
+//                 <a href="">Forgot Password</a>
+//                 <button type="submit" id="loginShow" onClick={hideElem} className="submit-btn">Already Have an account</button>
 
-               </div>
+//                </div>
               
-           </div>
+//            </div>
 
            
 
-       </div>
+//        </div>
 
        
-    </section>
+//     </section>
  
-</body>
+// </body>
                                          
 
-    );
-}
-export default LoginUser;                                      
+//     );
+// }
+// export default LoginUser;                                      

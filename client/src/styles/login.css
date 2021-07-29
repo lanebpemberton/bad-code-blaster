@@ -1,0 +1,30 @@
+.background{
+    background-image: url("./images/individuals/giphy.gif");
+    background-position: center;
+    height: 1000px;
+    width: 100%;
+    background-size: 1900px 1000px;
+}
+/* ./images/individuals/background\ image\ original.jpg */
+.border{
+    background-image: url("./images/individuals/border.png");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.box{
+    background-image: url("./images/individuals/buttons\ menu.png");
+    background-position: center;
+    background-size: 100% 100%;
+    width: 25%;
+    height: 40%;
+    position: absolute;
+    left: 37.5%;
+    top: 25%;
+
+    
+}
+
+
