@@ -44,6 +44,8 @@ const Game = () => {
     const handleReplayClick = () => {
         setGameOver(false);
         setEnemiesKilled(0);
+        gameEngine.enemies = [];
+        gameEngine.player.bulletsFired = [];
         gameEngine.startEngine();
     }
 
