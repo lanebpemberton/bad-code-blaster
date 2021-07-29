@@ -28,6 +28,10 @@ Database Type: MongoDB
 
 Libaries Used: ReactJS, Apollo, Graphql, Heroku
 -----------------------
+Future additions:
+Adding background music when application is open. 
+Sound for game effects.
+Filtering the highscores between the ships because they all have different speeds and dimensions Add Stages as you progress through the game, each stage will get harder.
 
 
 
