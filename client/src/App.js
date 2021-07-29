@@ -11,32 +11,32 @@ import './styles/Global.css';
 
 const styles = {
   body:{
-    backgroundImage: `url("./styles/images/bg-color-matched-to-logo.jpg")`,
-    width: '100%',
-    height: '100%',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover'
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 }
 
 // In our main App component, we are rendering a single instance of a game canvas
 function App() {
   return (
-    <div style={styles.body}>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <h1>Login component goes here</h1>
-          </Route>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/play">
+    
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <h1>Login component goes here</h1>
+        </Route>
+        <Route exact path="/home">
+          <Home />
+        </Route>
+        <Route exact path="/play">
+          <div style={styles.body}>
             <Game />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+          </div>
+        </Route>
+      </Switch>
+    </Router>
+    
   );
 }
 

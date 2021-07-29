@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const height = 200
@@ -23,12 +23,19 @@ const GameOver = ({ onReplayClick }) => {
         top: rect.top + (rect.height / 2) - (height / 2),
         left: rect.left + (rect.width / 2) - (width / 2)
     })
+
+    useEffect(() => {
+        document.getElementById("playAgainButton").addEventListener("touchstart",onReplayClick);
+        document.getElementById("goHomeButton").addEventListener("touchstart",() => history.push('/home'));
+    }, [])
+
+
     
     return (
         <div style={styles}>
             Game Over
-            <button onClick={onReplayClick}>Play Again?</button>
-            <button onClick={() => history.push('/home')}>Go Home</button>
+            <button id="playAgainButton" onClick={onReplayClick}>Play Again?</button>
+            <button id="goHomeButton" onClick={() => history.push('/home')}>Go Home</button>
         </div>
     )
 }   
