@@ -18,13 +18,20 @@
     background-image: url("./images/individuals/buttons\ menu.png");
     background-position: center;
     background-size: 100% 100%;
-    width: 45%;
-    height: 55%;
+    width: 25%;
+    height: 54%;
     position: absolute;
-    left: 28%;
-    top: 15%;
-
-    
+    left: 55%;
+    top: 18%;
 }
 
-
+.title{
+    background-image: url("./images/individuals/title\ logo\ example\ with\ bg.png");
+    position: absolute;
+    top: 23%;
+    left: 13%;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 35%;
+    height: 45%;
+}
