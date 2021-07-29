@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Home from './pages/Home';
 
 import {
@@ -9,9 +10,8 @@ import {
 import Game from './components/Game';
 
 import Customize from './components/Customize';
-
 import './styles/Global.css';
-
+import LoginUsers from './components/LoginUsers';
 const styles = {
   body:{
     display: 'flex',
@@ -22,11 +22,13 @@ const styles = {
 
 // In our main App component, we are rendering a single instance of a game canvas
 function App() {
+
+
   return (  
     <Router>
       <Switch>
         <Route exact path="/">
-          <h1>Login component goes here</h1>
+          <LoginUsers />
         </Route>
         <Route exact path="/home">
           <Home />
