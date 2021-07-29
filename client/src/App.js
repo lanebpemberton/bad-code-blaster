@@ -1,7 +1,6 @@
 import React from 'react';
-
 import Home from './pages/Home';
-
+import Help from './pages/Help';
 import {
   BrowserRouter as Router,
   Route,
@@ -40,6 +39,9 @@ function App() {
         </Route>
         <Route exact path="/customize">
           <Customize />
+        </Route>
+        <Route exact path='/help'>
+          <Help />
         </Route>
       </Switch>
     </Router>
