@@ -22,7 +22,7 @@ function hideElem() {
 
 function LoginUsers() {
     const history = useHistory();
-    const [loginUser, loginUserState] = useMutation(MUTATION_LOGIN);
+    const [loginUser, {loginData, loginLoading, loginError}] = useMutation(MUTATION_LOGIN);
     const [createUser, createUserState] = useMutation(MUTATION_CREATE_USER);
 
     const handleLoginSubmit = event => {
@@ -38,13 +38,13 @@ function LoginUsers() {
     }
     const handleLoginSuccess = () => {
         // set userId in local storage
-        localStorage.setItem("loggedInUserId", loginUserState._id)
+        localStorage.setItem("loggedInUserId", loginData.login._id)
         // redirect to home
         history.push('/home')
     }
     const handleLoginFailure = error => {
         // no op for now?
-        alert('Error: ', error)
+        alert('Error: Login failed')
         console.error(error);
     }
 
@@ -63,12 +63,15 @@ function LoginUsers() {
     }
     const handleSignupSuccess = () => {
         // set userId in local storage
-        localStorage.setItem("loggedInUserId", createUserState._id)
+        if (!createUserState) {
+            console.log('no user state')
+        }
+        localStorage.setItem("loggedInUserId", createUserState.data?._id)
         // redirect to home
         history.push('/home')
     }
     const handleSignupFailure = error => {
-        alert('Error: ', error)
+        alert('Error: Account creation failed')
         console.error(error);
     }
 
