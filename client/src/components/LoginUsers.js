@@ -22,7 +22,7 @@ function hideElem() {
 
 function LoginUsers() {
     const history = useHistory();
-    const [loginUser, {loginData, loginLoading, loginError}] = useMutation(MUTATION_LOGIN);
+    const [loginUser, loginUserState] = useMutation(MUTATION_LOGIN);
     const [createUser, createUserState] = useMutation(MUTATION_CREATE_USER);
 
     const handleLoginSubmit = event => {
@@ -36,11 +36,11 @@ function LoginUsers() {
             }
         }).then(handleLoginSuccess, handleLoginFailure);
     }
-    const handleLoginSuccess = () => {
+    const handleLoginSuccess = ({data}) => {
         // set userId in local storage
-        localStorage.setItem("loggedInUserId", loginData.login._id)
+            localStorage.setItem("loggedInUserId", data.login._id)
         // redirect to home
-        history.push('/home')
+            history.push('/home')
     }
     const handleLoginFailure = error => {
         // no op for now?
@@ -50,7 +50,6 @@ function LoginUsers() {
 
     const handleSignupSubmit = event => {
         event.preventDefault()
-        console.log('signup form submit', event.target.username.value, event.target.email.value, event.target.password.value)
         createUser({
             variables : {
                 // variables
@@ -61,12 +60,9 @@ function LoginUsers() {
             }
         }).then(handleSignupSuccess, handleSignupFailure);
     }
-    const handleSignupSuccess = () => {
+    const handleSignupSuccess = ({data}) => {
         // set userId in local storage
-        if (!createUserState) {
-            console.log('no user state')
-        }
-        localStorage.setItem("loggedInUserId", createUserState.data?._id)
+        localStorage.setItem("loggedInUserId", data.addUser._id)
         // redirect to home
         history.push('/home')
     }
