@@ -3,6 +3,7 @@ import Player from "./Player";
 import {isMobile} from 'react-device-detect';
 import MobileController from "./MobileController";
 import Background from "./Background";
+import Enemies from "./Enemies";
 
 class GameEngine {
     constructor()
@@ -27,6 +28,8 @@ class GameEngine {
       Scale(this.canvas,this.ctx);
       //setup event handlers for keyboard input
       this.assignPlayerControls();
+      //create enemeies instance
+      this.enemies = new Enemies(this.canvas, this.ctx);
       //initialize player
       this.player = new Player(this.canvas, this.ctx);
       this.player.draw();
@@ -96,6 +99,7 @@ class GameEngine {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.background.draw();
       this.player.draw();
+      this.enemies.update();
       if(isMobile)
       {
         this.mobileController.draw();
