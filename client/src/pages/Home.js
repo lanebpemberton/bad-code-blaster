@@ -31,26 +31,20 @@ const Home = () => {
                 </div>
             </BrowserView>
             <MobileView style={{height: '100%'}}>
-                <div className="mobile background" style={{display:'flex',justifyContent:'center',flexDirection:'column'}}>
+                <div className="mobile background" style={{display:'flex',justifyContent:'space-between',flexDirection:'column',alignItems:'center',}}>
                     <div className="mobile title">
                     </div>
-                    <div className="mobile cluster">
+                    <a href="/play" className="mobile play" style={{display:'flex',justifyContent:'center',alignItems:'center'}}><h1>PLAY</h1></a>
+                    <div className="mobile cluster" style={{width:'100%',height:'20%',display:'flex',justifyContent:'space-between',flexDirection:'row'}}>
                         <div className="mobile highscore">
                         </div>
-                        <div className="mobile customize centerContent">
-                            <a href="/customize"><h1 className="title font customizeText">CUSTOMIZE</h1></a>
+                        <div className="mobile customize">
+                            <a href="/customize"></a>
                         </div>
-                        <div className="mobile help centerContent">
-                            <a href="/help" className="helpImg centerContent"><img alt='Help' src={HelpImg}></img></a>
+                        <div className="mobile help">
+                            <a href="/help"></a>
                         </div>
                     </div>
-                    <div className="playMenu">
-                        <a href="/play" className="playImg centerContent"><img alt='Help' src={HelpImg}></img></a>
-                    </div>
-
-
-
-
                 </div>
             </MobileView>
         </React.Fragment>
