@@ -4,6 +4,8 @@ import {isMobile} from 'react-device-detect';
 import MobileController from "./MobileController";
 import Background from "./Background";
 import Enemy from "./Enemy";
+import shipRelationships from "./ShipViews";
+
 
 class GameEngine {
     constructor()
@@ -30,8 +32,10 @@ class GameEngine {
       Scale(this.canvas,this.ctx);
       //setup event handlers for keyboard input
       this.assignPlayerControls();
+      //get shipid from local storage
+      const shipID = localStorage.getItem("currentShipIndex") || 0;
       //initialize player
-      this.player = new Player(this.canvas, this.ctx);
+      this.player = new Player(this.canvas, this.ctx, shipRelationships[shipID]);
       this.player.draw();
       //start game engine running every 10 milliseconds
       setInterval(this.runEngine.bind(this),10);
@@ -142,10 +146,11 @@ class GameEngine {
           }
         }
         //Draw enemies - RNG to append enemies to rendering array
-        const chanceToSpawn = 0.03
+        const chanceToSpawn = 0.02
         const spawnRoll = Math.random()
 
-        if (chanceToSpawn >= spawnRoll && this.enemies.length < 1) {
+        if (chanceToSpawn >= spawnRoll) {
+
           // add enemy to array
           this.enemies.push(new Enemy(this.canvas, this.ctx))
         }
@@ -188,6 +193,8 @@ class GameEngine {
                 if (this.onEnemyKilled) {
                   this?.onEnemyKilled()
                 }
+                this.player.destroyBullet(a);
+
               }
             }
           } 

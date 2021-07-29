@@ -10,12 +10,12 @@ import PlayerBullet from "./PlayerBullet";
 //We will need to import them all in the same way as above on line 1. 
 
 class Player {
-    constructor(canvas, ctx) //In addition to the above comments, we will add a constructor argument to declare which ship is selected
+    constructor(canvas, ctx, view) //In addition to the above comments, we will add a constructor argument to declare which ship is selected
     {
         this.canvas = canvas;
         this.ctx = ctx;
         this.sprite = new Image();
-        this.sprite.src = logo;
+        this.sprite.src = view;
         this.width = 70;
         this.height = 50;
         this.x = (this.canvas.width-this.width)/2;

@@ -1,5 +1,4 @@
 require('dotenv').config()
-const { ProvidedRequiredArgumentsOnDirectivesRule } = require('graphql/validation/rules/ProvidedRequiredArgumentsRule');
 const mongoose = require('mongoose');
 const db = require('../models');
 
