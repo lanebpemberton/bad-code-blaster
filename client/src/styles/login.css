@@ -1,5 +1,5 @@
 .background{
-    background-image: url("./images/individuals/hyperdrive-edit-800x600_25fps.gif");
+    background-image: url("./images/individuals/background\ image\ original.jpg");
     background-position: center;
     height: 1000px;
     width: 100%;
@@ -18,11 +18,11 @@
     background-image: url("./images/individuals/buttons\ menu.png");
     background-position: center;
     background-size: 100% 100%;
-    width: 25%;
-    height: 40%;
+    width: 45%;
+    height: 55%;
     position: absolute;
-    left: 37.5%;
-    top: 25%;
+    left: 28%;
+    top: 15%;
 
     
 }

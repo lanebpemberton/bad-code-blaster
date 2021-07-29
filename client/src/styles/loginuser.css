@@ -31,10 +31,10 @@ section {
     height: 100%;
 }
 
-h2{
+h2, a, span{
     color: #E414C3;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bolder;
 }
 
@@ -68,8 +68,8 @@ h2{
 .input-box{
     width: 100%;
     background: transparent;
-    border: 1px solid #fff;
-    margin: 6px 0;
+    border: 5px solid #fff;
+    margin: 20px 0;
     height: 32px;
     border-radius: 20px;
     padding: 0 10px;
@@ -95,7 +95,7 @@ h2{
 button{
     width: 100%;
     background: transparent;
-    border: 1px solid #E414C3;
+    border: 5px solid #E414C3;
     margin: 35px 0 10px;
     height: 32px;
     font-size: 12px;    
@@ -124,8 +124,8 @@ button{
         border-radius: 50%;
         background: #fff;
         position: absolute;
-        right: -1px;
-        top: -1px;
+        right: -5.5px;
+        top: -5px;
 
     }
 
