@@ -4,8 +4,13 @@
   "description": "Client and server packages for bad-code-blaster.",
   "main": "server/server.js",
   "scripts": {
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-client": "cd client && npm ci",
+    "install-server": "cd server && npm ci",
+    "install": "npm run install-client && npm run install-server",
+    "build": "npm run install && cd client && npm run build",
+    "start": "npm run develop"
   },
   "repository": {
     "type": "git",
@@ -16,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/lanebpemberton/bad-code-blaster/issues"
   },
-  "homepage": "https://github.com/lanebpemberton/bad-code-blaster#readme"
+  "homepage": "https://github.com/lanebpemberton/bad-code-blaster#readme",
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
 }
