@@ -5,6 +5,22 @@ import { useMutation } from '@apollo/client';
 import { MUTATION_lOGIN } from '../utils/mutations';
 import { MUTATIONCREATEUSER } from '../utils/mutations';
 
+function hideElem() {
+    var cardFront = document.getElementById("cardFront");
+    var cardBack = document.getElementById("cardBack");
+  
+
+    if (cardFront.style.display === "block" || !cardFront.style.display) {
+        cardBack.style.display = "block"
+        cardFront.style.display = "none"
+    } else if (cardBack.style.display === "block" || !cardBack.style.display) {
+        cardBack.style.display = "none"
+        cardFront.style.display = "block"
+    } else {
+        console.error('annoying error message')
+    }
+}
+
 function LoginUsers() {
     return(
         <div className= "background">
