@@ -21,7 +21,7 @@ class Enemy extends CollidableEntity {
         this.damage = 6;
         this.sprite = new Image();
         this.sprite.src = alien;
-        this.speed = 6;
+        this.speed = 4;
     }
 
     draw()

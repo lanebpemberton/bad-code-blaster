@@ -27,6 +27,10 @@ a {
     flex-direction: row;
     flex-wrap: nowrap;
 }
+.column {
+    display: flex;
+    flex-direction: column;
+}
 
 .hide {
     opacity: 0;

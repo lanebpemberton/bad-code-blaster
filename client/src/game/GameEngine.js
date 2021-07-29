@@ -145,10 +145,10 @@ class GameEngine {
           }
         }
         //Draw enemies - RNG to append enemies to rendering array
-        const chanceToSpawn = 0.03
+        const chanceToSpawn = 0.02
         const spawnRoll = Math.random()
 
-        if (chanceToSpawn >= spawnRoll && this.enemies.length < 1) {
+        if (chanceToSpawn >= spawnRoll) {
           // add enemy to array
           this.enemies.push(new Enemy(this.canvas, this.ctx))
         }
@@ -191,6 +191,7 @@ class GameEngine {
                 if (this.onEnemyKilled) {
                   this?.onEnemyKilled()
                 }
+                this.player.destroyBullet(a);
               }
             }
           } 
