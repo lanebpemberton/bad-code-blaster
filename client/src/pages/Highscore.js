@@ -10,7 +10,7 @@ const formatDate = (date) => {
 export default function Highscore() {
     const { loading, error, data } = useQuery(QUERY_USER_HIGHSCORE, {
         variables: {
-            user_id: '60ff4a746d4e5e393cd036de'
+            user_id: localStorage.getItem('loggedInUserId')
         }
     });
 
