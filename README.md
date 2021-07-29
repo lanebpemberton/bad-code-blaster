@@ -13,7 +13,7 @@ Github: https://github.com/lanebpemberton/bad-code-blaster
 ---------------------------------
 
 Problems we ran into: Not being able to use certain componets due to Reactjs resolved by abiding by the laws of ReactJs.
-(npm i) regnerated packagejson therfore loosing dependencies solution use (npm ci) to use existing packgejson.
+(npm i) regnerated packagejson therefore loosing dependencies solution use (npm ci) to use existing packgejson.
 
 
 
