@@ -1,9 +1,9 @@
 .background{
-    background-image: url("./images/individuals/giphy.gif");
+    background-image: url("./images/individuals/hyperdrive-edit-800x600_25fps.gif");
     background-position: center;
     height: 1000px;
     width: 100%;
-    background-size: 1900px 1000px;
+    background-size: cover;
 }
 /* ./images/individuals/background\ image\ original.jpg */
 .border{
