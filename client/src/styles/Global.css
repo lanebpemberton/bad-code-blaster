@@ -21,3 +21,13 @@ a {
         font-size: 7px;
     }
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.hide {
+    opacity: 0;
+}

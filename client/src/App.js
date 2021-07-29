@@ -7,6 +7,7 @@ import {
   Switch
 } from 'react-router-dom'
 import Game from './components/Game';
+import Customize from './components/Customize';
 import './styles/Global.css';
 
 const styles = {
@@ -33,6 +34,9 @@ function App() {
           <div style={styles.body}>
             <Game />
           </div>
+        </Route>
+        <Route exact path="/customize">
+          <Customize />
         </Route>
       </Switch>
     </Router>
