@@ -1,24 +1,49 @@
 import React from 'react';
-// import GameCanvas from './components/GameCanvas';
+
+import Home from './pages/Home';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+import Game from './components/Game';
+
+import Customize from './components/Customize';
 import './styles/Global.css';
 import LoginUsers from './components/LoginUsers';
 const styles = {
   body:{
-    padding:0,
-    margin:0,
-    justifyContent:'center',
-    alignContent:'center',
-    display:'flex'
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 }
 
 // In our main App component, we are rendering a single instance of a game canvas
 function App() {
-  return (
-    <div style={styles.body}>
-      <LoginUsers/>
-      {/* <GameCanvas /> */}
-    </div>
+
+
+  return (  
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <LoginUsers />
+        </Route>
+        <Route exact path="/home">
+          <Home />
+        </Route>
+        <Route exact path="/play">
+          <div style={styles.body}>
+            <Game />
+          </div>
+        </Route>
+        <Route exact path="/customize">
+          <Customize />
+        </Route>
+      </Switch>
+    </Router>
+
   );
 }
 
