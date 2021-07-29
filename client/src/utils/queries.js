@@ -29,6 +29,7 @@ export const QUERY_USER_HIGHSCORE = gql`
       score
       enemies_killed
       time_alive
+      timestamp
     }
   }
 `;

@@ -77,7 +77,7 @@ function LoginUsers() {
                 <div className="loginTitle"></div>
                 <div className= "loginBox">
                     <div className="card-front" id="cardFront">
-                        <h2 className="card-text">LOGIN</h2>
+                        <h1 className="title font card-title">LOGIN</h1>
                         <form className="login-form" onSubmit={handleLoginSubmit}>
                             <input name="email" type="email" id="email-login" className="input-box"
                             placeholder="Your Email here" required/>
@@ -89,7 +89,7 @@ function LoginUsers() {
                         <button type="button" id="signupShow" onClick={hideElem} className="btn">Sign Up</button>
                     </div>
                     <div className="card-back" id="cardBack" style={{display:'none'}}>
-                        <h2>Sign Up</h2>
+                        <h1 className="title font card-title">Sign Up</h1>
                         <form onSubmit={handleSignupSubmit}>
                             <input name="username" type="username" id="signupUsername" className="input-box"
                             placeholder="Your Username here" required/>
