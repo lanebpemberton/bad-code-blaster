@@ -9,8 +9,11 @@ const nextButtonStyles = {
     flexGrow: 0
 }
 
-const NextButton = ({ onClick }) => (
-    <div onClick={onClick} style={nextButtonStyles}></div>
+const NextButton = ({ hide, onClick, style }) => (
+    <div className={hide ? "hide" : ""} onClick={onClick} style={{
+        ...nextButtonStyles,
+        ...style
+    }}></div>
 )
 
 export default NextButton;

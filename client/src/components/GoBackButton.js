@@ -5,12 +5,10 @@ import { useHistory } from 'react-router-dom'
 const goBackButtonStyles = {
     backgroundImage: `url("${goBackButton}")`,
     backgroundSize: '100% 100%',
-    height: 50,
-    width: 50,
     flexGrow: 0
 }
 
-const GoBackButton = ({ height = 50, width = 50 }) => {
+const GoBackButton = ({ height = 50, width = 50, style }) => {
     const history = useHistory()
 
     const onClick = () => {
@@ -21,7 +19,8 @@ const GoBackButton = ({ height = 50, width = 50 }) => {
         <div onClick={onClick} style={{
             ...goBackButtonStyles,
             height,
-            width
+            width,
+            ...style
         }}></div>
     )
 }

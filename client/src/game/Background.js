@@ -4,6 +4,10 @@ class Background {
     constructor(canvas,ctx)
     {
         this.img = new Image();
+        this.img.onload = () => {
+            this.imgW = this.img.width * this.scale;
+            this.imgH = this.img.height * this.scale;
+        }
         this.img.src = background;
         this.width = canvas.width;
         this.height = canvas.height;

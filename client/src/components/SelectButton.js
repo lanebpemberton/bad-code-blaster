@@ -4,17 +4,16 @@ import selectImg from "../styles/images/interface/select_button.png";
 const selectButtonStyles = {
     backgroundImage: `url("${selectImg}")`,
     backgroundSize: '100% 100%',
-    height: 50,
-    width: 50,
     flexGrow: 0
 }
 
-const SelectButton = ({ onClick, height = 50, width = 50 }) => {
+const SelectButton = ({ onClick, height = 75, width = 75, style = {} }) => {
     return (
         <div onClick={onClick} style={{
             ...selectButtonStyles,
             height,
-            width
+            width,
+            ...style
         }}></div>
     )
 }

@@ -9,8 +9,11 @@ const backButtonStyles = {
     flexGrow: 0
 }
 
-const BackButton = ({ onClick }) => (
-    <div className={hide ? "hide" : ""} onClick={onClick} style={backButtonStyles}></div>
+const BackButton = ({ onClick, hide, style = {} }) => (
+    <div className={hide ? "hide" : ""} onClick={onClick} style={{
+        ...backButtonStyles,
+        ...style
+    }}></div>
 )
 
 export default BackButton;
