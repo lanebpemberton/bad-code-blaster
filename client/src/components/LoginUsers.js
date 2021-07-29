@@ -1,9 +1,8 @@
 import React from 'react'
 import { useMutation } from '@apollo/client'
-import { MUTATION_LOGIN, MUTATIONCREATEUSER } from '../utils/mutations'
+import { MUTATION_LOGIN, MUTATION_CREATE_USER } from '../utils/mutations'
 import { useHistory } from 'react-router-dom';
 import '../styles/login.css'
-import '../styles/loginuser.css'
 
 function hideElem() {
     var cardFront = document.getElementById("cardFront");
@@ -24,7 +23,7 @@ function hideElem() {
 function LoginUsers() {
     const history = useHistory();
     const [loginUser, loginUserState] = useMutation(MUTATION_LOGIN);
-    const [createUser, createUserState] = useMutation(MUTATIONCREATEUSER);
+    const [createUser, createUserState] = useMutation(MUTATION_CREATE_USER);
 
     const handleLoginSubmit = event => {
         event.preventDefault();
@@ -32,15 +31,20 @@ function LoginUsers() {
         loginUser({ 
             variables: {
                 // variables
+                email: event.target.email.value,
+                password: event.target.password.value,
             }
         }).then(handleLoginSuccess, handleLoginFailure);
     }
     const handleLoginSuccess = () => {
         // set userId in local storage
+        localStorage.setItem("loggedInUserId", loginUserState._id)
         // redirect to home
+        history.push('/home')
     }
     const handleLoginFailure = error => {
         // no op for now?
+        alert('Error: ', error)
         console.error(error);
     }
 
@@ -50,22 +54,29 @@ function LoginUsers() {
         createUser({
             variables : {
                 // variables
+                username: event.target.username.value,
+                email: event.target.email.value,
+                password: event.target.password.value,
+                ship_id: "60ff4a746d4e5e393cd036d8", //hard-coded value for now
             }
         }).then(handleSignupSuccess, handleSignupFailure);
     }
     const handleSignupSuccess = () => {
         // set userId in local storage
+        localStorage.setItem("loggedInUserId", createUserState._id)
         // redirect to home
+        history.push('/home')
     }
     const handleSignupFailure = error => {
+        alert('Error: ', error)
         console.error(error);
     }
 
     return(
-        <div className= "background">
-            <div className= "border">
-                <div className="title"></div>
-                <div className= "box">
+        <div className= "default background">
+            <div className= "default border">
+                <div className="loginTitle"></div>
+                <div className= "loginBox">
                     <div className="card-front" id="cardFront">
                         <h2 className="card-text">LOGIN</h2>
                         <form className="login-form" onSubmit={handleLoginSubmit}>
@@ -87,9 +98,9 @@ function LoginUsers() {
                             placeholder="Your Email here" required/>
                             <input name="password" type="password" id="signupPassword" className="input-box"
                             placeholder="Your Password here" required/>
-                            <button type="button" id="signUpbtn" className="btn card-text">Sign Up</button>
+                            <button type="submit" id="signUpbtn" className="btn card-text">Sign Up</button>
                         </form>
-                        <button type="submit" id="loginShow" onClick={hideElem} className="submit-btn">Already Have an account</button>
+                        <button type="button" id="loginShow" onClick={hideElem} className="submit-btn">Already Have an account</button>
                     </div>
                 </div>
             </div>

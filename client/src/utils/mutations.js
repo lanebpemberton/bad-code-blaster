@@ -7,20 +7,18 @@ export const MUTATION_LOGIN = gql`
       _id
       username
       email
-      password
       
     
       }
     }
 `;
 
-export const MUTATIONCREATEUSER = gql`
+export const MUTATION_CREATE_USER = gql`
   mutation createUser($username: String, $email: String, $password: String, $ship_id: ID) {
-
-    addUser(username: $username, email: $email, password: $password, ship_id: $ship_id) {
+    addUser(username: $username, email: $email, password: $password, current_ship: $ship_id) {
+      _id
       username
       email
-      password
       current_ship {
         ship_name
       }
